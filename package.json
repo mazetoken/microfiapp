@@ -2,7 +2,7 @@
   "name": "microfi",
   "version": "1.0.0",
   "description": "Microfi app",
-  "main": "functions/server.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "build": "netlify-lambda build express",

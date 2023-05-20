@@ -3,6 +3,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 //import http from "http";
+//import path from "path";
 import serverless from "serverless-http";
 import bodyParser from "body-parser";
 import rateLimit from "express-rate-limit";
@@ -13,8 +14,8 @@ Config.EnforceCashTokenReceiptAddresses = true;
 
 const app = express();
 app.use(express.json());
-const router = express.Router();
-app.use('/.netlify/functions/server', router);
+
+//app.use("/.netlify/functions/server", router);
 app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -59,7 +60,12 @@ app.post("/", apiLimiter, async function (req, res) {
     }
 });
 
-serverless(app)
+//module.exports = app;
+//export function app()
+//module.exports.handler = serverless(app);
+//exports.handler = serverless(app)
+
+//serverless(app)
 app.listen(3000, () => console.log('Local app listening on port 3000!'));
 
 //const server = http.createServer(app);
