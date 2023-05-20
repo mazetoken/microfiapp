@@ -1,2 +1,3 @@
 # microfi
-Microfi Free Flow cashtoken on BItcoin Cash
+Microfi Free Flow cashtoken on Bitcoin Cash
+Token distribution application
