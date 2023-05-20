@@ -65,7 +65,7 @@ app.post("/", apiLimiter, async function (req, res) {
 //module.exports.handler = serverless(app);
 //exports.handler = serverless(app)
 
-//serverless(app)
+serverless(app)
 app.listen(3000, () => console.log('Local app listening on port 3000!'));
 
 //const server = http.createServer(app);
