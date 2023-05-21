@@ -5,22 +5,17 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "build": "netlify-lambda build express",
-    "start": "nodemon server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "author": "b_s_z",
-  "license": "Apache-2.0",
+  "author": "",
+  "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.9",
-    "mainnet-js": "^1.1.23"
-  },
-  "devDependencies": {
-    "body-parser": "^1.20.2",
     "express": "^4.18.2",
     "express-rate-limit": "^6.7.0",
-    "netlify-lambda": "^2.0.16",
-    "nodemon": "^2.0.22",
-    "serverless-http": "^3.2.0"
+    "mainnet-js": "^1.1.23"
   }
 }
