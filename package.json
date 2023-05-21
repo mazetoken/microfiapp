@@ -6,16 +6,20 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "mainnet-js": "^1.1.23"
+  },
+  "devDependencies": {
     "body-parser": "^1.20.2",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-rate-limit": "^6.7.0",
-    "mainnet-js": "^1.1.23"
+    "nodemon": "^2.0.22",
+    "serverless-http": "^3.2.0"
   }
 }

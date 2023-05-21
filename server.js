@@ -1,11 +1,12 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
-import http from "http";
+import serverless from "serverless-http";
 import bodyParser from "body-parser";
 import rateLimit from "express-rate-limit";
-import { Config, Wallet, TokenSendRequest } from "mainnet-js";
+import { Config, Wallet, TokenSendRequest, BCMR } from "mainnet-js";
 
+//DefaultProvider.servers.testnet = ["wss://chipnet.imaginary.cash:50004"]
 Config.EnforceCashTokenReceiptAddresses = true;
 
 const app = express();
@@ -18,6 +19,7 @@ app.set("view engine", "ejs");
 const apiLimiter = rateLimit({
     windowMs: 1 * 60 * 60 * 1000, // 1 hour
     max: 1,
+    //draft_polli_ratelimit_headers: true,
     message: "Too many requests, please try again after an hour",
 	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
@@ -39,9 +41,13 @@ app.post("/", apiLimiter, async function (req, res) {
                 tokenId: process.env.TOKENID
             }
         )]);
+        //const bcmrUrl = "https://bafkreiejafiz23ewtyh6m3dpincmxouohdcimrd33abacrq3h2pacewwjm.ipfs.dweb.link";
+        //await BCMR.addMetadataRegistryFromUri(bcmrUrl);
+        //const tokenInfo = BCMR.getTokenInfo(process.env.TOKENID);
         res.render("index", {
             content: "You got 100 XMI! You can claim again after an hour",
             txIds: txId,
+            //image: tokenInfo.uris.icon,
             error: null
         });
     } else if (userAddress = !req.body.userAddress) {
@@ -49,7 +55,10 @@ app.post("/", apiLimiter, async function (req, res) {
     }
 });
 
-const server = http.createServer(app);
-server.listen(process.env.PORT, () => {
-console.log("Server listening on port " + process.env.PORT + "!");
-});
+//const server = http.createServer(app);
+//server.listen(process.env.PORT, () => {
+//console.log("Server listening on port " + process.env.PORT + "!");
+//});
+
+serverless(app);
+app.listen(process.env.PORT, () => console.log("Local app listening on port " + process.env.PORT + "!"));
