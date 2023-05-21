@@ -6,12 +6,15 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "build": "next build",
     "start": "nodemon server.js"
   },
-  "author": "",
+  "author": "b_s_z",
   "license": "MIT",
   "dependencies": {
-    "mainnet-js": "^1.1.23"
+    "mainnet-js": "^1.1.23",
+    "next": "^13.4.3"
   },
   "devDependencies": {
     "body-parser": "^1.20.2",
