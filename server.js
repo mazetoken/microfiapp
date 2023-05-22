@@ -20,7 +20,7 @@ nextApp.prepare().then(() => {
     app.use(express.static("public"));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
-    app.set("view engine", "ejs");
+    //app.set("view engine", "ejs");
 
     const apiLimiter = rateLimit({
         windowMs: 1 * 60 * 60 * 1000, // 1 hour
