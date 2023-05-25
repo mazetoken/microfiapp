@@ -4,22 +4,27 @@ import express from "express";
 //import http from "http";
 import bodyParser from "body-parser";
 import rateLimit from "express-rate-limit";
+import requestIp from "request-ip";
 import { verify } from "hcaptcha";
 import { Config, Wallet, TokenSendRequest } from "mainnet-js";
 
 const app = express();
 app.set('trust proxy', 1);
+app.use(requestIp.mw());
 
 const apiLimiter = rateLimit({
-    windowMs: 2 * 60 * 1000,
-    max: 10,
+    windowMs: 1 * 60 * 60 * 1000, // 1 hour
+    max: 1,
+    keyGenerator: function (req, res) {
+        return req.clientIp
+    },
     message: "Too many requests, please try again later",
     draft_polli_ratelimit_headers: true,
-	//standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-	//legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
-const sleep = (ms = number) => new Promise((resolve) => setTimeout(resolve, ms));
+//const sleep = (ms = number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 app.use(express.static("public"));
 app.use(express.json());
