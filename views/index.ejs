@@ -37,6 +37,7 @@
 
     @media screen and (max-width: 576px) {}
   </style>
+  <script src="https://hcaptcha.com/1/api.js" async defer></script>
 </head>
 
 <body>
@@ -47,6 +48,9 @@
       <h3>Claim 100 XMI (10000 MI)<br>every 1 hour</h3>
       <form action="/" method="post">
         <input type="text" name="userAddress" size="56" placeholder="cashtokens address bitcoincash:z..."><br>
+        <br>
+        <div class="h-captcha" data-sitekey="18b02976-2241-4563-87e9-1ce821fe7f7e"></div>
+        <br>
         <input type="submit" value="Claim"><br>
       </form>
       <br>
