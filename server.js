@@ -52,7 +52,7 @@ app.post("/", apiLimiter, async function (req, res) {
             //image: tokenInfo.uris.icon,
             error: null
         });
-    } else if (userAddress === !req.body.userAddress) {
+    } else if (userAddress = !req.body.userAddress) {
         res.render("index", { content: null, txIds: null, image: null, error: "You need to provide valid bitcoincash address" });
     }
 });
