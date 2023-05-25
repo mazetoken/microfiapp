@@ -15,14 +15,15 @@ app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
+app.set('trust proxy', 1);
 
 const apiLimiter = rateLimit({
     windowMs: 1 * 60 * 60 * 1000, // 1 hour
     max: 1,
-    //draft_polli_ratelimit_headers: true,
+    draft_polli_ratelimit_headers: true,
     message: "Too many requests, please try again after an hour",
-	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+	//standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+	//legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
 app.get("/", function (req, res) {
