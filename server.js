@@ -35,7 +35,7 @@ app.get("/", function (req, res) {
 Config.EnforceCashTokenReceiptAddresses = true;
 
 app.post("/", apiLimiter, async function (req, res) {
-    const userAddress = req.body.userAddress;
+    let userAddress = req.body.userAddress;
     if (userAddress = req.body.userAddress) {
         const seed = process.env.SEED;
         const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0");
