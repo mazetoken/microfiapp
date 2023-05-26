@@ -1,7 +1,6 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
-//import http from "http";
 import bodyParser from "body-parser";
 import rateLimit from "express-rate-limit";
 import requestIp from "request-ip";
@@ -18,7 +17,7 @@ const apiLimiter = rateLimit({
     keyGenerator: function (req, res) {
         return req.clientIp
     },
-    message: "Too many requests, please try again later",
+    message: "Too many requests, please try again after an hour",
     draft_polli_ratelimit_headers: true,
 	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
@@ -36,10 +35,9 @@ app.get("/", function (req, res) {
     res.render("index", { content: null, txIds: null, image: null, error: null });
 });
 
-//DefaultProvider.servers.testnet = ["wss://chipnet.imaginary.cash:50004"]
-Config.EnforceCashTokenReceiptAddresses = true;
-
 app.post("/", apiLimiter, async function (req, res) {
+    //DefaultProvider.servers.testnet = ["wss://chipnet.imaginary.cash:50004"]
+    Config.EnforceCashTokenReceiptAddresses = true;
     let userAddress = req.body.userAddress;
     if (userAddress = req.body.userAddress) {
         const seed = process.env.SEED;
@@ -51,7 +49,7 @@ app.post("/", apiLimiter, async function (req, res) {
                 tokenId: process.env.TOKENID
             }
         )]);
-        //const bcmrUrl = "https://bafkreiejafiz23ewtyh6m3dpincmxouohdcimrd33abacrq3h2pacewwjm.ipfs.dweb.link";
+        //const bcmrUrl = "https://bafkreiejafiz23ewtyh6m3dpincmxouohdcimrd33abacrq3h2pacewwjm.ipfs.dweb.link/";
         //await BCMR.addMetadataRegistryFromUri(bcmrUrl);
         //const tokenInfo = BCMR.getTokenInfo(process.env.TOKENID);
         res.render("index", {
@@ -75,8 +73,6 @@ app.post("/", apiLimiter, async function (req, res) {
     }
 });
 
-//const server = http.createServer(app);
-//server.listen(process.env.PORT, () => {
 app.listen(process.env.PORT, () => {
     console.log("Server listening on port " + process.env.PORT + "!");
 });
