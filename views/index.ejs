@@ -11,31 +11,48 @@
   <style>
     body {
       text-align: center;
-      max-width: 756px;
+      max-width: 768px;
       margin: auto;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       background-color: black;
       font-size: large;
       color: #FFFFFF;
     }
-
     p {
       font-size: small;
     }
-
     a:link {
       color: #0AC18E;
       background-color: transparent;
       text-decoration: none;
     }
-
     a:visited {
       color: #0AC18E;
       background-color: transparent;
       text-decoration: none;
     }
-
-    @media screen and (max-width: 576px) {}
+    .collapsible {
+			background-color: #0AC18E;
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+			color: white;
+			cursor: pointer;
+			padding: 18px;
+			width: 33%;
+			border: none;
+			text-align: center;
+			outline: none;
+			font-size: 14px;
+		}
+		.active, .collapsible:hover {
+			background-color: #0AC18E;
+		}
+		.content {
+			padding: 0 18px;
+			display: none;
+			overflow: hidden;
+			background-color: black;
+		}
+    @media screen and (max-width: 512px) {}
   </style>
   <script src="https://hcaptcha.com/1/api.js" async defer></script>
 </head>
@@ -77,17 +94,19 @@
     <h3>Credits</h3>
     <p><a href="https://mainnet.cash">mainnet.cash</a></p>
     <p><a href="https://cashonize.com">cashonize.com</a></p>
-    <br>
     <hr>
     <footer>
       <p>Microfi Free Flow (XMI) is an experimental fungible CashToken issued on Bitcoin Cash blockchain.<br>
         Total amount of 1 million XMI (100 million MI) is distributed for free.
       </p>
+      <button type="button" class="collapsible">Donate BCH or CashTokens</button>
+			<div class="content">
       <p>Donate BCH:<br>bitcoincash:qp0944jn8nzxg84xpcxuqa36z0pj0frwvcj9yr7qma<br>
          <img src="./img/qrcode1.png" alt="qr1" width="128"><br>
          Donate CashTokens:<br>bitcoincash:zp0944jn8nzxg84xpcxuqa36z0pj0frwvc40hasxyw<br>
          <img src="./img/qrcode2.png" alt="qr2" width="128">
       </p>
+      </div>
       <hr>
       <p><a href="https://microfi.univer.se"><img src="./img/microfi_icon.png" width="42"></a>
         <a href="https://mazetoken.github.io"><img src="./img/maze_icon.png" alt="MazeIcon" width="42"></a>
@@ -100,6 +119,21 @@
   </div>
   <br>
   <script src="./server.js"></script>
+  <script>
+		var coll = document.getElementsByClassName("collapsible");
+		var i;
+		for (i = 0; i < coll.length; i++) {
+		  coll[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var content = this.nextElementSibling;
+			if (content.style.display === "block") {
+			  content.style.display = "none";
+			} else {
+			  content.style.display = "block";
+			}
+		  });
+		}
+	</script>
 </body>
 
 </html>
