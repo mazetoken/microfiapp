@@ -49,7 +49,7 @@ app.post("/", apiLimiter, async function (req, res) {
                 tokenId: process.env.TOKENID
             }
         )]);
-        //const bcmrUrl = "https://bafkreiejafiz23ewtyh6m3dpincmxouohdcimrd33abacrq3h2pacewwjm.ipfs.dweb.link/";
+        //const bcmrUrl = "";
         //await BCMR.addMetadataRegistryFromUri(bcmrUrl);
         //const tokenInfo = BCMR.getTokenInfo(process.env.TOKENID);
         res.render("index", {
