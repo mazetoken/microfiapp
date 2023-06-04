@@ -13,7 +13,7 @@ app.use(requestIp.mw());
 
 const apiLimiter = rateLimit({
     windowMs: 1 * 60 * 60 * 1000, // 1 hour
-    max: 5,
+    max: 1,
     keyGenerator: function (req, res) {
         return req.clientIp
     },
