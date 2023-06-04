@@ -39,6 +39,8 @@ app.post("/", apiLimiter, async function (req, res) {
     //DefaultProvider.servers.testnet = ["wss://chipnet.imaginary.cash:50004"]
     Config.EnforceCashTokenReceiptAddresses = true;
     let userAddress = req.body.userAddress;
+    const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
+    console.log(verifyData);
     if (userAddress = req.body.userAddress) {
         const seed = process.env.SEED;
         const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0");
@@ -60,17 +62,21 @@ app.post("/", apiLimiter, async function (req, res) {
         });
     } else if (userAddress = !req.body.userAddress) {
         res.render("index", { content: null, txIds: null, image: null, error: "You need to provide valid bitcoincash address" });
-    }
-    try {
-        const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"])
-        console.log(verifyData);
-        if (! verifyData.success) {
-            throw new Error('captcha verification failed');
-        }
-    } catch (e) {
-        res.render("index", { content: null, txIds: null, image: null, error: e.message });
+        return;
+    } else if (verifyData = !req.body["h-captcha-response"], verifyData = ["missing-input-response"] ) {
+        res.render("index", { content: null, txIds: null, image: null, error: "Wrong captcha" });
         return;
     }
+    //try {
+        //const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"])
+        //console.log(verifyData);
+        //if (! verifyData.success) {
+            //throw new Error("captcha verification failed");
+        //}
+    //} catch (e) {
+        //res.render("index", { content: null, txIds: null, image: null, error: e.message });
+        //return;
+    //}
 });
 
 app.listen(process.env.PORT, () => {
