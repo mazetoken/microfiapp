@@ -13,7 +13,7 @@ app.use(requestIp.mw());
 
 const apiLimiter = rateLimit({
     windowMs: 1 * 60 * 60 * 1000, // 1 hour
-    max: 1,
+    max: 5,
     keyGenerator: function (req, res) {
         return req.clientIp
     },
@@ -41,7 +41,7 @@ app.post("/", apiLimiter, async function (req, res) {
     let userAddress = req.body.userAddress;
     const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
     console.log(verifyData);
-    if (userAddress = req.body.userAddress) {
+    if (userAddress = req.body.userAddress, verifyData.success) {
         const seed = process.env.SEED;
         const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0");
         const { txId } = await wallet.send([new TokenSendRequest(
@@ -63,8 +63,8 @@ app.post("/", apiLimiter, async function (req, res) {
     } else if (userAddress = !req.body.userAddress) {
         res.render("index", { content: null, txIds: null, image: null, error: "You need to provide valid bitcoincash address" });
         return;
-    } else if (verifyData = !req.body["h-captcha-response"], verifyData = ["missing-input-response"] ) {
-        res.render("index", { content: null, txIds: null, image: null, error: "Wrong captcha" });
+    } else if (! verifyData.success) {
+        res.render("index", { content: null, txIds: null, image: null, error: "Captcha verification failed" });
         return;
     }
     //try {
