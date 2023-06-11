@@ -42,7 +42,7 @@ app.post("/", apiLimiter, async function (req, res) {
     const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
     console.log(verifyData);
     let blacklistAddress = "bitcoincash:zp3ztytwhuudk28tzgcxt68sv0sfvj3lmqdhv4k86s";
-    if (userAddress = req.body.userAddress, verifyData.success, userAddress = !blacklistAddress) {
+    if (userAddress = req.body.userAddress, verifyData.success) {
         const seed = process.env.SEED;
         const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0"); 
         const { txId } = await wallet.send([new TokenSendRequest(
