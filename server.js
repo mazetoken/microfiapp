@@ -41,9 +41,10 @@ app.post("/", apiLimiter, async function (req, res) {
     let userAddress = req.body.userAddress;
     const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
     console.log(verifyData);
+    const blacklistAddress = "bitcoincash:zp3ztytwhuudk28tzgcxt68sv0sfvj3lmqdhv4k86s";
     if (userAddress = req.body.userAddress, verifyData.success) {
         const seed = process.env.SEED;
-        const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0");
+        const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0"); 
         const { txId } = await wallet.send([new TokenSendRequest(
             {
                 cashaddr: userAddress,
@@ -51,13 +52,9 @@ app.post("/", apiLimiter, async function (req, res) {
                 tokenId: process.env.TOKENID
             }
         )]);
-        //const bcmrUrl = "";
-        //await BCMR.addMetadataRegistryFromUri(bcmrUrl);
-        //const tokenInfo = BCMR.getTokenInfo(process.env.TOKENID);
         res.render("index", {
             content: "You got 100 XMI! You can claim again after an hour",
             txIds: txId,
-            //image: tokenInfo.uris.icon,
             error: null
         });
     } else if (userAddress = !req.body.userAddress) {
@@ -66,17 +63,13 @@ app.post("/", apiLimiter, async function (req, res) {
     } else if (! verifyData.success) {
         res.render("index", { content: null, txIds: null, image: null, error: "Captcha verification failed" });
         return;
+    } else if (userAddress = null) {
+        res.render("index", { content: null, txIds: null, image: null, error: "You need to provide valid bitcoincash address" });
+        return;
+    } else if (userAddress = blacklistAddress) {
+        res.render("index", { content: null, txIds: null, image: null, error: "Verification failed" });
+        return;
     }
-    //try {
-        //const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"])
-        //console.log(verifyData);
-        //if (! verifyData.success) {
-            //throw new Error("captcha verification failed");
-        //}
-    //} catch (e) {
-        //res.render("index", { content: null, txIds: null, image: null, error: e.message });
-        //return;
-    //}
 });
 
 app.listen(process.env.PORT, () => {
