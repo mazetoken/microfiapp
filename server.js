@@ -38,10 +38,11 @@ app.get("/", function (req, res) {
 app.post("/", apiLimiter, async function (req, res) {
     //DefaultProvider.servers.testnet = ["wss://chipnet.imaginary.cash:50004"]
     Config.EnforceCashTokenReceiptAddresses = true;
-    let userAddress = req.body.userAddress;
+    var userAddress = req.body.userAddress;
+    var blacklistAddress = "bitcoincash:zp3ztytwhuudk28tzgcxt68sv0sfvj3lmqdhv4k86s";
+    var userAddress = !blacklistAddress;
     const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
     console.log(verifyData);
-    let blacklistAddress = "bitcoincash:zp3ztytwhuudk28tzgcxt68sv0sfvj3lmqdhv4k86s";
     if (userAddress = req.body.userAddress, verifyData.success) {
         const seed = process.env.SEED;
         const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0"); 
