@@ -41,7 +41,7 @@ app.post("/", apiLimiter, async function (req, res) {
     let userAddress = req.body.userAddress;
     const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
     console.log(verifyData);
-    const blacklistAddress = "bitcoincash:zp3ztytwhuudk28tzgcxt68sv0sfvj3lmqdhv4k86s";
+    let blacklistAddress = "bitcoincash:zp3ztytwhuudk28tzgcxt68sv0sfvj3lmqdhv4k86s";
     if (userAddress = req.body.userAddress, verifyData.success) {
         const seed = process.env.SEED;
         const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0"); 
@@ -62,9 +62,6 @@ app.post("/", apiLimiter, async function (req, res) {
         return;
     } else if (! verifyData.success) {
         res.render("index", { content: null, txIds: null, image: null, error: "Captcha verification failed" });
-        return;
-    } else if (userAddress = null) {
-        res.render("index", { content: null, txIds: null, image: null, error: "You need to provide valid bitcoincash address" });
         return;
     } else if (userAddress = blacklistAddress) {
         res.render("index", { content: null, txIds: null, image: null, error: "Verification failed" });
