@@ -41,9 +41,10 @@ app.post("/", apiLimiter, async function (req, res) {
     let userAddress = req.body.userAddress;
     var blacklistAddress1 = "bitcoincash:zp3ztytwhuudk28tzgcxt68sv0sfvj3lmqdhv4k86s";
     var blacklistAddress2 = "bitcoincash:zp4mgas9zzmlxa0tte3e8djwjynftv5vlvxnm3ek2v";
+    var blacklistAddress3 = "bitcoincash:zq9aarucz2djnjtedw0c3rkfmfvhfwszs5yd75n7tk";
     const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
     console.log(verifyData);
-    if (userAddress = req.body.userAddress, verifyData.success, userAddress != blacklistAddress1, userAddress != blacklistAddress2) {
+    if (userAddress = req.body.userAddress, verifyData.success, userAddress != blacklistAddress1, userAddress != blacklistAddress2, userAddress != blacklistAddress3) {
         const seed = process.env.SEED;
         const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0"); 
         const { txId } = await wallet.send([new TokenSendRequest(
@@ -64,7 +65,7 @@ app.post("/", apiLimiter, async function (req, res) {
     } else if (! verifyData.success) {
         res.render("index", { content: null, txIds: null, image: null, error: "Captcha verification failed" });
         return;
-    } else if (userAddress = blacklistAddress1, userAddress = blacklistAddress2) {
+    } else if (userAddress = blacklistAddress1, userAddress = blacklistAddress2, userAddress = blacklistAddress3) {
         res.render("index", { content: null, txIds: null, image: null, error: "Verification failed" });
         return;
     }
