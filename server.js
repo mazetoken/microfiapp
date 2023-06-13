@@ -5,14 +5,14 @@ import bodyParser from "body-parser";
 import rateLimit from "express-rate-limit";
 import requestIp from "request-ip";
 import { verify } from "hcaptcha";
-import { Config, Wallet, TokenSendRequest } from "mainnet-js";
+import { Wallet, TokenSendRequest } from "mainnet-js";
 
 const app = express();
 app.set('trust proxy', 1);
 app.use(requestIp.mw());
 
 const apiLimiter = rateLimit({
-    windowMs: 1 * 60 * 60 * 1000, // 1 hour
+    windowMs: 2 * 60 * 60 * 1000, // 2 hours
     max: 1,
     keyGenerator: function (req, res) {
         return req.clientIp
@@ -37,16 +37,17 @@ app.get("/", function (req, res) {
 
 app.post("/", apiLimiter, async function (req, res) {
     //DefaultProvider.servers.testnet = ["wss://chipnet.imaginary.cash:50004"]
-    Config.EnforceCashTokenReceiptAddresses = true;
-    let userAddress = req.body.userAddress;
+    //Config.EnforceCashTokenReceiptAddresses = true;
+    var userAddress = req.body.userAddress;
     var blacklistAddress1 = "bitcoincash:zp3ztytwhuudk28tzgcxt68sv0sfvj3lmqdhv4k86s";
-    var blacklistAddress2 = "bitcoincash:zp4mgas9zzmlxa0tte3e8djwjynftv5vlvxnm3ek2v";
-    var blacklistAddress3 = "bitcoincash:zq9aarucz2djnjtedw0c3rkfmfvhfwszs5yd75n7tk";
+    var blacklistAddress2 = "bitcoincash:zq9aarucz2djnjtedw0c3rkfmfvhfwszs5yd75n7tk";
+    var blacklistAddress3 = "bitcoincash:qp4mgas9zzmlxa0tte3e8djwjynftv5vlvpeg0hs4l";
+    var blacklistAddress4 = "bitcoincash:zp4mgas9zzmlxa0tte3e8djwjynftv5vlvxnm3ek2v";
     const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
     console.log(verifyData);
-    if (userAddress = req.body.userAddress, verifyData.success, userAddress != blacklistAddress1, userAddress != blacklistAddress2, userAddress != blacklistAddress3) {
-        const seed = process.env.SEED;
-        const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0"); 
+    const seed = process.env.SEED;
+    const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0");
+    if (userAddress = req.body.userAddress, userAddress != blacklistAddress1, userAddress != blacklistAddress2, userAddress != blacklistAddress3, userAddress != blacklistAddress4, verifyData.success) {
         const { txId } = await wallet.send([new TokenSendRequest(
             {
                 cashaddr: userAddress,
@@ -55,18 +56,18 @@ app.post("/", apiLimiter, async function (req, res) {
             }
         )]);
         res.render("index", {
-            content: "You got 100 XMI! You can claim again after an hour",
+            content: "You got 100 XMI! You can claim again after two hours",
             txIds: txId,
             error: null
         });
     } else if (userAddress != req.body.userAddress) {
         res.render("index", { content: null, txIds: null, image: null, error: "You need to provide valid bitcoincash address" });
         return;
+    } else if (userAddress = blacklistAddress1, userAddress = blacklistAddress2, userAddress = blacklistAddress3, userAddress = blacklistAddress4) {
+        res.render("index", { content: null, txIds: null, image: null, error: "Verification failed" });
+        return;
     } else if (! verifyData.success) {
         res.render("index", { content: null, txIds: null, image: null, error: "Captcha verification failed" });
-        return;
-    } else if (userAddress = blacklistAddress1, userAddress = blacklistAddress2, userAddress = blacklistAddress3) {
-        res.render("index", { content: null, txIds: null, image: null, error: "Verification failed" });
         return;
     }
 });
