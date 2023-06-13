@@ -38,7 +38,7 @@ app.get("/", function (req, res) {
 app.post("/", apiLimiter, async function (req, res) {
     //DefaultProvider.servers.testnet = ["wss://chipnet.imaginary.cash:50004"]
     Config.EnforceCashTokenReceiptAddresses = true;
-    let userAddress = req.body.userAddress;
+    var userAddress = req.body.userAddress;
     var blacklistAddress1 = "bitcoincash:zp3ztytwhuudk28tzgcxt68sv0sfvj3lmqdhv4k86s";
     var blacklistAddress2 = "bitcoincash:zp4mgas9zzmlxa0tte3e8djwjynftv5vlvxnm3ek2v";
     var blacklistAddress3 = "bitcoincash:zq9aarucz2djnjtedw0c3rkfmfvhfwszs5yd75n7tk";
