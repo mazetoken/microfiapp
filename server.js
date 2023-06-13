@@ -12,7 +12,7 @@ app.set('trust proxy', 1);
 app.use(requestIp.mw());
 
 const apiLimiter = rateLimit({
-    windowMs: 1 * 60 * 60 * 1000, // 1 hour
+    windowMs: 2 * 60 * 60 * 1000, // 2 hours
     max: 1,
     keyGenerator: function (req, res) {
         return req.clientIp
@@ -62,13 +62,13 @@ app.post("/", apiLimiter, async function (req, res) {
     } else if (userAddress != req.body.userAddress) {
         res.render("index", { content: null, txIds: null, image: null, error: "You need to provide valid bitcoincash address" });
         return;
-    } else if (! verifyData.success) {
-        res.render("index", { content: null, txIds: null, image: null, error: "Captcha verification failed" });
-        return;
     } else if (userAddress = blacklistAddress1, userAddress = blacklistAddress2, userAddress = blacklistAddress3) {
         res.render("index", { content: null, txIds: null, image: null, error: "Verification failed" });
         return;
-    }
+    } else if (! verifyData.success) {
+        res.render("index", { content: null, txIds: null, image: null, error: "Captcha verification failed" });
+        return;
+        };
 });
 
 app.listen(process.env.PORT, () => {
