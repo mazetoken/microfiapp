@@ -23,7 +23,7 @@ const apiLimiter = rateLimit({
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
-//const sleep = (ms = number) => new Promise((resolve) => setTimeout(resolve, ms));
+const sleep = (ms = number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 app.use(express.static("public"));
 app.use(express.json());
