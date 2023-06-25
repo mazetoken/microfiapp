@@ -54,7 +54,7 @@ app.post("/", apiLimiter, async function (req, res) {
         }
     };
     if (userAddress = ! req.body.userAddress) {
-        res.render("index", { content: null, txIds: null, image: null, error: "You need to provide valid bitcoincash address" });
+        res.render("index", { content: null, txIds: null, image: null, error: "You need to provide valid bitcoincash cashaddress" });
         return; 
     };
     const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
