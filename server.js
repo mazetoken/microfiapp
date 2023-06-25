@@ -6,7 +6,6 @@ import rateLimit from "express-rate-limit";
 import requestIp from "request-ip";
 import { verify } from "hcaptcha";
 import { Wallet, TokenSendRequest } from "mainnet-js";
-import { isValidCashAddressPayloadLength } from "@bitauth/libauth";
 
 const app = express();
 app.set('trust proxy', 1);
@@ -53,15 +52,11 @@ app.post("/", apiLimiter, async function (req, res) {
             res.render("index", { content: null, txIds: null, image: null, error: "Verification failed" });
             return;
         }
-    };
+    }
     if (userAddress = ! req.body.userAddress) {
         res.render("index", { content: null, txIds: null, image: null, error: "You need to provide valid bitcoincash cashaddress" });
         return; 
-    };
-    if (userAddress = ! isValidCashAddressPayloadLength.success) {
-        res.render("index", { content: null, txIds: null, image: null, error: "You need to provide valid bitcoincash cashaddress" });
-        return; 
-    };
+    }
     const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
     console.log(verifyData);
     if (userAddress = req.body.userAddress, verifyData.success) {
