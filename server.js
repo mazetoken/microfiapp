@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 import rateLimit from "express-rate-limit";
 import requestIp from "request-ip";
 import { verify } from "hcaptcha";
-import { Wallet, TokenSendRequest } from "mainnet-js";
+import { Config, Wallet, TokenSendRequest } from "mainnet-js";
 
 const app = express();
 app.set('trust proxy', 1);
@@ -34,8 +34,6 @@ app.get("/", function (req, res) {
 });
 
 app.post("/", apiLimiter, async function (req, res) {
-    //DefaultProvider.servers.testnet = ["wss://chipnet.imaginary.cash:50004"]
-    //Config.EnforceCashTokenReceiptAddresses = true;
     const seed = process.env.SEED;
     const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0");
     var userAddress = req.body.userAddress;
@@ -59,6 +57,7 @@ app.post("/", apiLimiter, async function (req, res) {
     }
     const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
     console.log(verifyData);
+    //Config.EnforceCashTokenReceiptAddresses = true;
     if (userAddress = req.body.userAddress, verifyData.success) {
         const { txId } = await wallet.send([new TokenSendRequest(
             {

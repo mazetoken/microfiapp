@@ -21,13 +21,15 @@ Open browser: localhost:3000
 
 to disable hCaptcha open `server.js` (eg. in Visual Studio Code or in notepad if you are a hardcore) and add a comment `//` in lines 60-61 and 75-78, like this:
 
-`//const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);`
+`//const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
 //console.log(verifyData);`
 
 `//else if (! verifyData.success) {
 //res.render("index", { content: null, txIds: null, image: null, error: "Captcha verification failed" });
 //return;
 //}`
+
+and delete `verifyData.success` from the line 61
 
 ---
 
