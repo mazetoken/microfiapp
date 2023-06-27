@@ -78,7 +78,7 @@ app.post("/", apiLimiter, async function (req, res) {
             }
         )]);
         res.render("index", {
-            content: "You got 100 XMI! You can claim again after two hours",
+            content: "You got 100 XMI! You can claim again after one hour",
             txIds: txId,
             error: null
         });
