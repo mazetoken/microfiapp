@@ -12,7 +12,7 @@ app.set('trust proxy', 1);
 app.use(requestIp.mw());
 
 const apiLimiter = rateLimit({
-    windowMs: 2 * 60 * 60 * 1000, // 2 hours
+    windowMs: 1 * 60 * 60 * 1000, // 1 hour
     max: 1,
     keyGenerator: function (req, res) {
         return req.clientIp
@@ -28,6 +28,11 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
+app.all('*', function(req, res, next) {
+    setTimeout(function() {
+        next();
+    }, 10000); // 10 seconds
+});
 
 app.get("/", function (req, res) {
     res.render("index", { content: null, txIds: null, image: null, error: null });
