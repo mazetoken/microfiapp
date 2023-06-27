@@ -45,8 +45,6 @@ app.post("/", apiLimiter, async function (req, res) {
     var blacklistAddress = [
         "bitcoincash:qp3ztytwhuudk28tzgcxt68sv0sfvj3lmq2altcp9r",
         "bitcoincash:zp3ztytwhuudk28tzgcxt68sv0sfvj3lmqdhv4k86s",
-        "bitcoincash:qq9aarucz2djnjtedw0c3rkfmfvhfwszs5r8d2ac59",
-        "bitcoincash:zq9aarucz2djnjtedw0c3rkfmfvhfwszs5yd75n7tk",
         "bitcoincash:qp4mgas9zzmlxa0tte3e8djwjynftv5vlvpeg0hs4l",
         "bitcoincash:zp4mgas9zzmlxa0tte3e8djwjynftv5vlvxnm3ek2v"
     ];
