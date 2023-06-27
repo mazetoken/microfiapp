@@ -17,7 +17,7 @@ const apiLimiter = rateLimit({
     keyGenerator: function (req, res) {
         return req.clientIp
     },
-    message: "Too many requests, please try again after two hours",
+    message: "Too many requests, please try again after one hour",
     draft_polli_ratelimit_headers: true,
 	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
