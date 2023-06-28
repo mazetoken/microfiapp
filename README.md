@@ -1,12 +1,20 @@
 # Microfi Free Flow on Bitcoin Cash
 
-Claim 100 Microfi Free Flow (XMI) CashToken every two hours
+https://microfi.univer.se
 
-https://microfi.onrender.com
+The total supply of 1 million XMI has been distributed for free
+
+Distribution lasted from May 25, 2023 to June 28, 2023
+
+You could claim 100 Microfi Free Flow (XMI) CashToken every hour
+
+https://microfi.onrender.com - is suspended due to bot attacks that prevent access to distribution application
+
+you can check the backup app - https://xmi.onrender.com
 
 (the server goes to sleep after 30 minutes of inactivity, so you may need to wait a few seconds for the page to load)
 
-Try it with MAZEy wallet https://mazetoken.github.io/mazey/
+Check MAZEy Botcoin Cash CashTokens wallet https://mazetoken.github.io/mazey/
 
 ---
 
