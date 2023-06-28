@@ -28,11 +28,11 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
-app.all('*', function(req, res, next) {
-    setTimeout(function() {
-        next();
-    }, 10000); // 10 seconds
-});
+//app.all('*', function(req, res, next) {
+    //setTimeout(function() {
+        //next();
+    //}, 10000); // 10 seconds
+//});
 
 app.get("/", function (req, res) {
     res.render("index", { content: null, txIds: null, image: null, error: null });
