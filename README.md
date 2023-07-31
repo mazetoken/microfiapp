@@ -1,20 +1,22 @@
-# Microfi Free Flow on Bitcoin Cash
+# Microfi Free Flow Distribution App (aka faucet)
 
-https://microfi.onrender.com
+Microfi Free Flow (XMI) Bitcoin Cash CashTokens.
 
-The total supply of 1 million XMI has been distributed for free
+The total supply of 1 million XMI has been distributed for free.
 
-Distribution run from May 25, 2023 to June 28, 2023
+Distribution ran from May 25, 2023 to June 28, 2023 (https://microfi.onrender.com)
 
-You could claim 100 Microfi Free Flow (XMI) CashToken every hour
-
-(the server goes to sleep after 30 minutes of inactivity, so you may need to wait a few seconds for the page to load)
-
-Check MAZEy Botcoin Cash CashTokens mini wallet https://mazetoken.github.io/mazey/
+Anyone could claim 100 Microfi Free Flow (XMI) CashTokens every hour.
 
 ---
 
-To try the app with your CashToken, you need to download the repository, change the wallet and token details in the "example_env.txt" and rename it to ".env"
+Microfi Free Flow website: https://microfi.eu
+
+Check MAZEy Bitcoin Cash CashTokens wallet https://mazetoken.github.io/mazey/
+
+---
+
+To try the app with your CashToken, you need to download the repository, change the wallet and token details in the "example_env.txt" and rename it to ".env". Change index.ejs and server.js for your needs (e.g. token details).
 
 Open a command line and run:
 
@@ -25,9 +27,9 @@ Open browser: localhost:3000
 
 ---
 
-open `index.ejs` (eg. in Visual Studio Code or in notepad if you are a hardcore) in views directory and remove comment from lines 71 and 81
+Open `index.ejs` (eg. in Visual Studio Code or in notepad if you are a hardcore) in views directory and change input type from `hidden` to `submit` in the line 78.
 
-to disable hCaptcha open `server.js` and add a comment `//` in lines 60-61 and 75-78, like this: 
+To disable hCaptcha open `server.js` and add a comment `//` in lines 67-68 and 83-86, like this: 
 
 `//const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
 //console.log(verifyData);`
@@ -37,7 +39,7 @@ to disable hCaptcha open `server.js` and add a comment `//` in lines 60-61 and 7
 //return;
 //}`
 
-and delete `verifyData.success` from the line 61
+and delete `, verifyData.success` from the line 70.
 
 ---
 

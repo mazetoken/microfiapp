@@ -66,7 +66,7 @@ app.post("/", apiLimiter, async function (req, res) {
     }
     const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
     console.log(verifyData);
-    //Config.EnforceCashTokenReceiptAddresses = true;
+    Config.EnforceCashTokenReceiptAddresses = true;
     if (userAddress = req.body.userAddress, verifyData.success) {
         const { txId } = await wallet.send([new TokenSendRequest(
             {
