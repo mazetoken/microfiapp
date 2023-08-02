@@ -16,7 +16,7 @@ Check MAZEy Bitcoin Cash CashTokens wallet https://mazetoken.github.io/mazey/
 
 ---
 
-To try the app with your CashToken, you need to download the repository, change the wallet and token details in the "example_env.txt" and rename it to ".env". Change index.ejs and server.js for your needs (e.g. token details).
+To try the app with your CashToken, you need to download the repository, change the wallet and token details in the "example_env.txt" and rename it to ".env".
 
 Open a command line and run:
 
@@ -27,7 +27,7 @@ Open browser: localhost:3000
 
 ---
 
-Open `index.ejs` (eg. in Visual Studio Code or in notepad if you are a hardcore) in views directory and change input type from `hidden` to `submit` in the line 78.
+Open `index.ejs` (eg. in Visual Studio Code or in notepad if you are a hardcore) in views directory and remove `<!--` form the line 71 and `--!>` from the line 94. Change `index.ejs` and `server.js` for your needs (e.g. token details).
 
 To disable hCaptcha open `server.js` and add a comment `//` in lines 67-68 and 83-86, like this: 
 
