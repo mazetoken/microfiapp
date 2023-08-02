@@ -2,7 +2,7 @@
 
 Microfi Free Flow (XMI) Bitcoin Cash CashTokens.
 
-The total supply of 1 million XMI has been distributed for free.
+The total supply of 1 million XMI was distributed for free.
 
 Distribution ran from May 25, 2023 to June 28, 2023 (https://microfi.onrender.com)
 
@@ -16,7 +16,7 @@ Check MAZEy Bitcoin Cash CashTokens wallet https://mazetoken.github.io/mazey/
 
 ---
 
-To try the app with your CashToken, you need to download the repository, change the wallet and token details in the "example_env.txt" and rename it to ".env".
+To try the app with your CashTokens, you need to download the repository, change the wallet and token details in the "example_env.txt" and rename it to ".env".
 
 Open a command line and run:
 
@@ -40,6 +40,10 @@ To disable hCaptcha open `server.js` and add a comment `//` in lines 67-68 and 8
 //}`
 
 and delete `, verifyData.success` from the line 70.
+
+---
+
+You can host the app on e.g. https://onrender.com
 
 ---
 
