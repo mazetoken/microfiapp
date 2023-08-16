@@ -4,7 +4,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import rateLimit from "express-rate-limit";
 import requestIp from "request-ip";
-import { verify } from "hcaptcha";
+//import { verify } from "hcaptcha";
 import { Config, Wallet, TokenSendRequest } from "mainnet-js";
 
 const app = express();
@@ -42,18 +42,18 @@ app.post("/", apiLimiter, async function (req, res) {
     const seed = process.env.SEED;
     const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0");
     var userAddress = req.body.userAddress;
-    var blacklistAddress = [
-        "bitcoincash:qp3ztytwhuudk28tzgcxt68sv0sfvj3lmq2altcp9r",
-        "bitcoincash:zp3ztytwhuudk28tzgcxt68sv0sfvj3lmqdhv4k86s",
-        "bitcoincash:qp4mgas9zzmlxa0tte3e8djwjynftv5vlvpeg0hs4l",
-        "bitcoincash:zp4mgas9zzmlxa0tte3e8djwjynftv5vlvxnm3ek2v"
-    ];
-    for (let element of blacklistAddress) {
-        if (userAddress.includes(element)) {
-            res.render("index", { content: null, txIds: null, image: null, error: "Verification failed" });
-            return;
-        }
-    }
+    //var blacklistAddress = [
+        //"bitcoincash:qp3ztytwhuudk28tzgcxt68sv0sfvj3lmq2altcp9r",
+        //"bitcoincash:zp3ztytwhuudk28tzgcxt68sv0sfvj3lmqdhv4k86s",
+        //"bitcoincash:qp4mgas9zzmlxa0tte3e8djwjynftv5vlvpeg0hs4l",
+        //"bitcoincash:zp4mgas9zzmlxa0tte3e8djwjynftv5vlvxnm3ek2v"
+    //];
+    //for (let element of blacklistAddress) {
+        //if (userAddress.includes(element)) {
+            //res.render("index", { content: null, txIds: null, image: null, error: "Verification failed" });
+            //return;
+        //}
+    //}
     if (userAddress = ! req.body.userAddress) {
         res.render("index", { content: null, txIds: null, image: null, error: "You need to provide CashTokens aware address- bitcoincash:z..." });
         return; 
@@ -64,10 +64,11 @@ app.post("/", apiLimiter, async function (req, res) {
         res.render("index", { content: null, txIds: null, image: null, error: "You need to provide CashTokens aware address- bitcoincash:z..." });
         return; 
     }
-    const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
-    console.log(verifyData);
+    //const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
+    //console.log(verifyData);
     Config.EnforceCashTokenReceiptAddresses = true;
-    if (userAddress = req.body.userAddress, verifyData.success) {
+    //if (userAddress = req.body.userAddress, verifyData.success) {
+    if (userAddress = req.body.userAddress) {
         const { txId } = await wallet.send([new TokenSendRequest(
             {
                 cashaddr: userAddress,
@@ -80,9 +81,9 @@ app.post("/", apiLimiter, async function (req, res) {
             txIds: txId,
             error: null
         });
-    } else if (! verifyData.success) {
-        res.render("index", { content: null, txIds: null, image: null, error: "Captcha verification failed" });
-        return;
+    //} else if (! verifyData.success) {
+        //res.render("index", { content: null, txIds: null, image: null, error: "Captcha verification failed" });
+        //return;
     }
 });
 

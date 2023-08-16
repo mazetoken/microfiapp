@@ -12,11 +12,15 @@ Anyone could claim 100 Microfi Free Flow (XMI) CashTokens every hour.
 
 Microfi Free Flow website: https://microfi.eu
 
-Check MAZEy Bitcoin Cash CashTokens wallet https://mazetoken.github.io/mazey/
-
 ---
 
 To try the app with your CashTokens, you need to download the repository, change the wallet and token details in the "example_env.txt" and rename it to ".env".
+
+`SEED="wallet seed phrase"`
+`TOKENAMOUNT= (with decimal places)`
+`TOKENID="fungible token category"`
+`//HCAPTCHA_SECRET=`
+`PORT=3000`
 
 Open a command line and run:
 
@@ -27,23 +31,25 @@ Open browser: localhost:3000
 
 ---
 
-Open `index.ejs` (eg. in Visual Studio Code or in notepad if you are a hardcore) in views directory and remove `<!--` form the line 71 and `--!>` from the line 94. Change `index.ejs` and `server.js` for your needs (e.g. token details).
-
-To disable hCaptcha open `server.js` and add a comment `//` in lines 67-68 and 83-86, like this: 
-
-`//const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
-//console.log(verifyData);`
-
-`//else if (! verifyData.success) {
-//res.render("index", { content: null, txIds: null, image: null, error: "Captcha verification failed" });
-//return;
-//}`
-
-and delete `, verifyData.success` from the line 70.
+Open `index.ejs` (eg. in Visual Studio Code or in notepad if you are a hardcore) in views directory and remove `<!--` form the line 71 and 78 and remove `-->` from the line 75 and 79. Change `index.ejs` and `server.js` for your needs (e.g. token details).
 
 ---
 
 You can host the app on e.g. https://onrender.com
+
+Create a new web service, connect Git repository, set Environment variables (copy/paste `Key` and `Value`  from .env, without HCAPTCHA_SECRET and PORT) and in settings use:
+
+Build command `npm i`
+
+Start command `npm start`
+
+---
+
+You can use e.g. [Electron Cash wallet](https://electroncash.org) to distribute tokens. You will need Bitcoin Cash for transactions fee
+
+---
+
+You can use [hCaptcha](https://hCaptcha.com/?r=913a126f378f) if you want (need to modify the code a bit: index.ejs, server.js and .env)
 
 ---
 
