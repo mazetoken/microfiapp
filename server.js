@@ -8,6 +8,9 @@ import requestIp from "request-ip";
 //import { verify } from "hcaptcha";
 import { Config, Wallet, TokenSendRequest } from "mainnet-js";
 
+Config.EnforceCashTokenReceiptAddresses = true;
+Config.DefaultParentDerivationPath = "m/44'/145'/0'/0/0";
+
 const app = express();
 app.use(helmet());
 app.set('trust proxy', 1);
@@ -19,7 +22,7 @@ const apiLimiter = rateLimit({
     keyGenerator: function (req, res) {
         return req.clientIp
     },
-    message: "Too many requests, please try again after one hour",
+    message: "Too many requests, please try again in 30 minutes",
     draft_polli_ratelimit_headers: true,
 	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
@@ -44,7 +47,7 @@ app.post("/", apiLimiter, async function (req, res) {
     //const seed = process.env.SEED;
     //const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0");
     const wif = process.env.WIF;
-    const wallet = await Wallet.fromWIF();
+    const wallet = await Wallet.fromWIF(wif);
     var userAddress = req.body.userAddress;
     //var blacklistAddress = [];
     //for (let element of blacklistAddress) {
@@ -65,7 +68,6 @@ app.post("/", apiLimiter, async function (req, res) {
     }
     //const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
     //console.log(verifyData);
-    Config.EnforceCashTokenReceiptAddresses = true;
     //if (userAddress = req.body.userAddress, verifyData.success) {
     if (userAddress = req.body.userAddress) {
         const { txId } = await wallet.send([new TokenSendRequest(
@@ -76,7 +78,7 @@ app.post("/", apiLimiter, async function (req, res) {
             }
         )]);
         res.render("index", {
-            content: "You got 100 XMI! You can claim again after one hour",
+            content: "You got 100 MESH! You can claim again after 30 minutes",
             txIds: txId,
             error: null
         });
