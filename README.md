@@ -4,7 +4,7 @@
 
 v. 1.0.1
 
-- added helmet.js
+- added [helmet](https://www.npmjs.com/package/helmet) npm
 
 - added WIF in .env
 
@@ -57,7 +57,7 @@ Change `index.ejs` and `server.js` for your needs (e.g. token details, hCaptcha,
 
 You can host the app on e.g. https://onrender.com
 
-Create a new web service, connect Git repository, set Environment variables (copy/paste `Key` and `Value`  from .env, without PORT) and in settings use:
+Create a new web service, connect Git repository, set Environment variables (copy/paste `Key` and `Value`  from .env, without " " and without PORT) and in settings use:
 
 Build command `npm i`
 
@@ -67,7 +67,7 @@ Start command `npm start`
 
 You can use e.g. [Electron Cash wallet](https://electroncash.org) to distribute tokens
 
-You will need Bitcoin Cash for transactions fee
+It is free for users, but you will need to send Bitcoin Cash to the app address for transactions fee
 
 ---
 
