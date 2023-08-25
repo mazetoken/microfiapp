@@ -1,4 +1,23 @@
-# Microfi Free Flow Distribution App (aka faucet)
+# Microfi CashTokens Distribution App (aka faucet)
+
+---
+
+v. 1.0.1
+
+- added helmet.js
+
+- added WIF in .env
+
+- updated the frontend
+
+- distribute MESH CRC20 CashToken
+
+If you like and use the app, consider keeping Microfi website URL in credits
+
+Donate Bitcoin Cash to bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc
+
+--- 
+v. 1.0.0
 
 Microfi Free Flow (XMI) Bitcoin Cash CashTokens.
 
@@ -16,10 +35,11 @@ Microfi Free Flow website: https://microfi.eu
 
 To try the app with your CashTokens, you need to download the repository, change the wallet and token details in the "example_env.txt" and rename it to ".env".
 
-`SEED="wallet seed phrase"`
+`#SEED="wallet seed phrase"`
+`WIF="wallet private key"`
 `TOKENAMOUNT= (with decimal places)`
 `TOKENID="fungible token category"`
-`//HCAPTCHA_SECRET=`
+`#HCAPTCHA_SECRET=`
 `PORT=3000`
 
 Open a command line and run:
@@ -31,13 +51,13 @@ Open browser: localhost:3000
 
 ---
 
-Open `index.ejs` (eg. in Visual Studio Code or in notepad if you are a hardcore) in views directory and remove `<!--` form the line 71 and 78 and remove `-->` from the line 75 and 79. Change `index.ejs` and `server.js` for your needs (e.g. token details).
+Change `index.ejs` and `server.js` for your needs (e.g. token details, hCaptcha, etc.)
 
 ---
 
 You can host the app on e.g. https://onrender.com
 
-Create a new web service, connect Git repository, set Environment variables (copy/paste `Key` and `Value`  from .env, without HCAPTCHA_SECRET and PORT) and in settings use:
+Create a new web service, connect Git repository, set Environment variables (copy/paste `Key` and `Value`  from .env, without PORT) and in settings use:
 
 Build command `npm i`
 
@@ -45,7 +65,9 @@ Start command `npm start`
 
 ---
 
-You can use e.g. [Electron Cash wallet](https://electroncash.org) to distribute tokens. You will need Bitcoin Cash for transactions fee
+You can use e.g. [Electron Cash wallet](https://electroncash.org) to distribute tokens
+
+You will need Bitcoin Cash for transactions fee
 
 ---
 

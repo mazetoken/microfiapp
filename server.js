@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
+import helmet from "helmet";
 import bodyParser from "body-parser";
 import rateLimit from "express-rate-limit";
 import requestIp from "request-ip";
@@ -8,11 +9,12 @@ import requestIp from "request-ip";
 import { Config, Wallet, TokenSendRequest } from "mainnet-js";
 
 const app = express();
+app.use(helmet());
 app.set('trust proxy', 1);
 app.use(requestIp.mw());
 
 const apiLimiter = rateLimit({
-    windowMs: 1 * 60 * 60 * 1000, // 1 hour
+    windowMs: 30 * 60 * 1000, // 30 minutes
     max: 1,
     keyGenerator: function (req, res) {
         return req.clientIp
@@ -39,15 +41,12 @@ app.get("/", function (req, res) {
 });
 
 app.post("/", apiLimiter, async function (req, res) {
-    const seed = process.env.SEED;
-    const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0");
+    //const seed = process.env.SEED;
+    //const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0");
+    const wif = process.env.WIF;
+    const wallet = await Wallet.fromWIF();
     var userAddress = req.body.userAddress;
-    //var blacklistAddress = [
-        //"bitcoincash:qp3ztytwhuudk28tzgcxt68sv0sfvj3lmq2altcp9r",
-        //"bitcoincash:zp3ztytwhuudk28tzgcxt68sv0sfvj3lmqdhv4k86s",
-        //"bitcoincash:qp4mgas9zzmlxa0tte3e8djwjynftv5vlvpeg0hs4l",
-        //"bitcoincash:zp4mgas9zzmlxa0tte3e8djwjynftv5vlvxnm3ek2v"
-    //];
+    //var blacklistAddress = [];
     //for (let element of blacklistAddress) {
         //if (userAddress.includes(element)) {
             //res.render("index", { content: null, txIds: null, image: null, error: "Verification failed" });

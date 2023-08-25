@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Microfi Free Flow CashTokens Distribution App</title>
-  <meta name="description" content="Microfi Free Flow (XMI) Bitcoin Cash CashTokens Distribution App (aka faucet)">
-  <meta name="web" content="https://github.com/mazetoken/microfiapp/">
-  <link rel="icon" type="image/ico" sizes="32x32" href="./img/favicon.ico">
+  <meta charset="UTF-8" />
+  <meta X-Content-Type-Options="nosniff" />
+  <meta http-equiv="Content-Type" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Microfi CashTokens Distribution App</title>
+  <meta name="description" content="Microfi Bitcoin Cash CashTokens Distribution App (aka faucet)" />
+  <meta name="web" content="https://github.com/mazetoken/microfiapp/" />
+  <meta property="og:url" content="https://microfi.eu" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Microfi CashTokens Distribution App" />
+	<meta property="og:description" content="Microfi Bitcoin Cash CashTokens Distribution App" />
+	<meta property="og:image" content="https://github.com/mazetoken/microfiweb/blob/main/img/microfi_icon.png" />
+	<meta property="og:site_name" content="Microfi CashTokens Distribution App" />
+  <!-- <link rel="icon" type="image/ico" sizes="32x32" href="./img/favicon.ico" /> -->
+  <link rel="icon" type="image/png" sizes="42x42" href="./img/microfi_icon.png">
   <style>
     body {
+      overflow-wrap: anywhere;
       text-align: center;
       max-width: 768px;
       margin: auto;
@@ -18,10 +28,10 @@
       color: #FFFFFF;
     }
     p {
-      font-size: small;
+      font-size: medium;
     }
     a:link {
-      color: #0AC18E;
+      color: teal;
       background-color: transparent;
       text-decoration: none;
     }
@@ -30,28 +40,6 @@
       background-color: transparent;
       text-decoration: none;
     }
-    .collapsible {
-			background-color: #0AC18E;
-      border-radius: 12px;
-			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-			color: white;
-			cursor: pointer;
-			padding: 18px;
-			width: 33%;
-			border: none;
-			text-align: center;
-			outline: none;
-			font-size: 14px;
-		}
-		.active, .collapsible:hover {
-			background-color: #0AC18E;
-		}
-		.content {
-			padding: 0 18px;
-			display: none;
-			overflow: hidden;
-			background-color: black;
-		}
     @media screen and (max-width: 512px) {}
   </style>
   <!-- <script src="https://hcaptcha.com/1/api.js" async defer></script> -->
@@ -60,82 +48,71 @@
 <body>
   <div>
     <p><img src="./img/microfi.png" alt="microfi" width="360"></p>
+    <p><img src="./img/bitcoin-cash-logo.png" alt="microfi" width="200"></p>
+    <p><i>Discover the power of <a href="https://cashtokens.org">CashTokens</a> with Microfi CashTokens Distribution App</i></p>
     <hr>
     <div>
-      <h3>Microfi Free Flow (XMI)</h3>
-      <p>The total supply of 1 million XMI was distributed for free.</p>
-      <p>Distribution app address: <a href="https://explorer.salemkode.com/address/bitcoincash:qrx0t6cv5m7ks7za8j52839q7vjqkahkcux4hxfvrz">bitcoincash:qrx0t6cv5m7ks7za8j52839q7vjqkahkcux4hxfvrz</a></p>
-      <p>Distribution ran from May 25, 2023 to June 28, 2023.<br>
-      Thank you.</p>
-      <p><i>Discover the power of CashTokens with Microfi Free Flow.</i></p>
-      <!-- <h3>Claim 100 XMI (10000 MI)<br>every 1 hour</h3>
-      <p><i>It`s free. No login required. You need CashTokens aware address- bitcoincash:z...</i></p>
+      <h3>Currently distributed token:</h3>
+      <h3>MESH (MESH) CRC20 CashTokens</h3>
+      <p>Distribution app wallet address:<br>
+        <a href="https://explorer.salemkode.com/address/bitcoincash:qrx0t6cv5m7ks7za8j52839q7vjqkahkcux4hxfvrz">bitcoincash:qrx0t6cv5m7ks7za8j52839q7vjqkahkcux4hxfvrz</a>
+      </p>
+      <h3>Claim 100 MESH<br>every 30 minutes</h3>
+      <p><i>It`s free. No login required.<br>You need Bitcoin Cash CashTokens aware address (bitcoincash:z...)</i></p>
       <form action="/" method="post">
         <input type="text" name="userAddress" size="56" placeholder="bitcoincash:z..."><br>
-        <br> -->
+        <br>
         <!-- <div class="h-captcha" data-sitekey="18b02976-2241-4563-87e9-1ce821fe7f7e"></div>
         <br> -->
-        <!-- <input type="submit" value="Claim"><br>
-      </form> -->
+        <input type="submit" value="Claim"><br>
+      </form>
       <br>
       <p><%= content %></p>
       <p><a href="https://explorer.salemkode.com/tx/<%= txIds %>"><%= txIds %></a></p>
       <p><%= error %></p>
       <br>
     </div>
-    <p>
-       Name: Microfi Free Flow<br>
-       Symbol: XMI<br>
-       Decimals: 2<br>
-       The smallest unit: MI<br>
-       TokenId:<br><a href="https://explorer.salemkode.com/token/b69f76548653033603cdcb81299e3c1d1f3d61ad66e7ba0e6569b493605b4cbe">b69f76548653033603cdcb81299e3c1d1f3d61ad66e7ba0e6569b493605b4cbe</a><br>
-       Genesis txId:<br> <a href="https://explorer.salemkode.com/tx/8a93e3c629b2d406f4f1623a8a83dd117239afcb62118b710edc0d216abb48e4">8a93e3c629b2d406f4f1623a8a83dd117239afcb62118b710edc0d216abb48e4</a><br>
-       <p>Microfi Free Flow (XMI) is fungible CashToken issued on Bitcoin Cash blockchain.</p>
-    </p>
-       <p>For more information, please visit the Microfi <a href="https://microfi.eu">website</a>.</p>
-       <br>
-       <img src="./img/microfi_icon.png" width="128">
-    </p>
-    <hr>
+      <p>
+        Name: MESH<br>
+        Symbol: MESH<br>
+        Decimals: 8<br>
+        TokenId:<br><a href="https://explorer.salemkode.com/token/15b6e0152a4ecb7a561ac0e1f3dca540db8133c520bffdaf532e6d99b4f980e3">15b6e0152a4ecb7a561ac0e1f3dca540db8133c520bffdaf532e6d99b4f980e3</a>
+      </p>
+      <p>For more information, please visit Dark Labs CashTokens <a href="https://mazetoken.github.io/darklabs/">website</a><br>
+        To display MESH in the explorer, copy <a href="https://mazetoken.github.io/darklabs/bcmr/darklabsbcmr.json">BCMR url</a> and add it to the explorer <a href="https://explorer.salemkode.com/registers">registry</a>
+      </p>
+      <br>
+      <img src="./img/meshmain.png" width="200">
+      </p>
+      <hr>
     <footer>
-      <button type="button" class="collapsible">Send BCH or CashTokens to the distribution address</button>
-			<div class="content">
-      <p>Send XMI to the CashTokens address or donate BCH or CashTokens for future distribution.</p>
-      <p>Donate BCH:<br>bitcoincash:qrx0t6cv5m7ks7za8j52839q7vjqkahkcux4hxfvrz<br>
-         <img src="./img/qrcode1.png" alt="qr1" width="128"><br>
-         Donate CashTokens:<br>bitcoincash:zrx0t6cv5m7ks7za8j52839q7vjqkahkcuplyc82u3<br>
-         <img src="./img/qrcode2.png" alt="qr2" width="128">
+      <p>To support your the app and keep it running, consider donating a small amount of BCH to the app wallet address:</p>
+      <p>bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc<br><br>
+        <img src="./img/qrcode1.png" alt="qr1" width="200"><br>
       </p>
       </div>
       <hr>
       <h3>Credits</h3>
-      <p><a href="https://mainnet.cash">mainnet.cash</a></p>
-      <p><a href="https://cashonize.com">cashonize.com</a></p>
-      <p><a href="https://cashtokens.org"><img src="./img/cashtokens.png" alt="CashTokens" width="128"></a></p>
+      <p><a href="https://mainnet.cash">mainnet.cash</a><br>
+        <a href="https://cashonize.com">cashonize.com</a><br>
+        <a href="https://electroncash.org">electroncash.org</a><br>
+        <a href="https://microfi.eu">microfi.eu</a>
+      </p>
       <hr>
-      <h3>Contact</h3>
-      <p><a href="https://microfi.eu"><img src="./img/microfi_icon.png" width="42"></a>
-        <a href="https://github.com/mazetoken/microfiapp/"><img src="./img/github-mark-white.png" alt="Github" width="42"></a>
-        <a href="https://t.me/mazetokens"><img src="./img/telegram.png" alt="TelegramIcon" width="42"></a>
+      <p>Previously distributed token:</p>
+      <p><a href="https://microfi.eu">Microfi Free Flow</a> (XMI) <img src="./img/microfi_icon.png" width="42"><br>
+         Distribution ran from May 25, 2023 to June 28, 2023
+      </p>
+      <hr>
+      <p>Contact:</p>
+      <p><a href="https://github.com/mazetoken/microfiapp/"><img src="./img/githubwhite.png" alt="Github" width="36"></a>
+        <a href="https://t.me/mazetokens"><img src="./img/telegram.png" alt="TelegramIcon" width="36"></a><br>
+        <br>
+        Maze Tokens Underworld, 2023
       </p>
     </footer>
   </div>
   <br>
-  <script src="./server.js"></script>
-  <script>
-		var coll = document.getElementsByClassName("collapsible");
-		var i;
-		for (i = 0; i < coll.length; i++) {
-		  coll[i].addEventListener("click", function() {
-			this.classList.toggle("active");
-			var content = this.nextElementSibling;
-			if (content.style.display === "block") {
-			  content.style.display = "none";
-			} else {
-			  content.style.display = "block";
-			}
-		  });
-		}
-	</script>
+  <script src="./server.js" type="application/octet-stream"></script>
 </body>
 </html>
