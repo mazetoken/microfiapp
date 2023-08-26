@@ -63,6 +63,8 @@ Build command `npm i`
 
 Start command `npm start`
 
+Server goes to sleep after 30 minutes of inactivity
+
 ---
 
 You can use e.g. [Electron Cash wallet](https://electroncash.org) to distribute tokens
