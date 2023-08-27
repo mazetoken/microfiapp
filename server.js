@@ -78,7 +78,7 @@ app.post("/", apiLimiter, async function (req, res) {
             }
         )]);
         res.render("index", {
-            content: "You got 100 MESH! You can claim again after 30 minutes",
+            content: "You got 150 MESH! You can claim again after 30 minutes",
             txIds: txId,
             error: null
         });
