@@ -49,20 +49,20 @@ app.post("/", apiLimiter, async function (req, res) {
     const wif = process.env.WIF;
     const wallet = await Wallet.fromWIF(wif);
     var userAddress = req.body.userAddress;
-    //var blacklistAddress = [];
-    //for (let element of blacklistAddress) {
-        //if (userAddress.includes(element)) {
-            //res.render("index", { content: null, txIds: null, image: null, error: "Verification failed" });
-            //return;
-        //}
-    //}
-    if (userAddress = ! req.body.userAddress) {
+    var blacklistAddress = [ "bitcoincash:zr3p4sja97wku94uayqqxe0lte32hjz62g80zy8ewk" ];
+    for (let element of blacklistAddress) {
+        if (userAddress.includes(element)) {
+            res.render("index", { content: null, txIds: null, image: null, error: "Verification failed" });
+            return;
+        }
+    }
+    if (userAddress =! req.body.userAddress) {
         res.render("index", { content: null, txIds: null, image: null, error: "You need to provide CashTokens aware address- bitcoincash:z..." });
         return; 
     }
     let text = req.body.userAddress;
     let result = text.match("bitcoincash:z");
-    if (userAddress = ! result) {
+    if (userAddress =! result) {
         res.render("index", { content: null, txIds: null, image: null, error: "You need to provide CashTokens aware address- bitcoincash:z..." });
         return; 
     }
