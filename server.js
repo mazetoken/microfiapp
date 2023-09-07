@@ -23,7 +23,6 @@ const apiLimiter = rateLimit({
         return req.clientIp
     },
     message: "Too many requests, please try again in 30 minutes",
-    draft_polli_ratelimit_headers: true,
 	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
