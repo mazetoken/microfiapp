@@ -1,4 +1,16 @@
-# Microfi CashTokens Distribution App (aka faucet)
+# Microfi CashTokens Distribution App on Bitcoin Cash
+
+If you like and use the app, consider keeping Microfi website url (https://microfi.eu) in credits
+
+Donate Bitcoin Cash to: bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88
+
+---
+
+v. 1.0.2
+
+- removed token amount and tokenId from env (it is in server.js now)
+
+- updated frontend to collect a small amount of BCH if there are no funds in the app wallet
 
 ---
 
@@ -8,13 +20,11 @@ v. 1.0.1
 
 - added WIF in .env
 
-- updated the frontend
+- updated frontend
 
 - distribute MESH CRC20 CashToken
 
-If you like and use the app, consider keeping Microfi website URL in credits
-
-Donate Bitcoin Cash to bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc
+- hCaptcha is optional (add/remove comments `//` in server.js and `<!-- -->` in index.ejs and remove comment `#` in .env)
 
 --- 
 v. 1.0.0
@@ -62,8 +72,6 @@ Create a new web service, connect Git repository, set Environment variables (cop
 Build command `npm i`
 
 Start command `npm start`
-
-Server goes to sleep after 30 minutes of inactivity
 
 ---
 

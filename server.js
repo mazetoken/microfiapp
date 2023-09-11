@@ -35,7 +35,7 @@ app.set("view engine", "ejs");
 //app.all('*', function(req, res, next) {
     //setTimeout(function() {
         //next();
-    //}, 10000); // 10 seconds
+    //}, 2000); // 2 seconds
 //});
 
 app.get("/", function (req, res) {
@@ -48,6 +48,8 @@ app.post("/", apiLimiter, async function (req, res) {
     const wif = process.env.WIF;
     const wallet = await Wallet.fromWIF(wif);
     var userAddress = req.body.userAddress;
+    const tokenAmount = 30000000000; // amount of Cash Tokens to distribute (with decimal places)
+    const token = "15b6e0152a4ecb7a561ac0e1f3dca540db8133c520bffdaf532e6d99b4f980e3"; // fungible tokenId (category)
     var blacklistAddress = [ "bitcoincash:zr3p4sja97wku94uayqqxe0lte32hjz62g80zy8ewk" ];
     for (let element of blacklistAddress) {
         if (userAddress.includes(element)) {
@@ -69,22 +71,32 @@ app.post("/", apiLimiter, async function (req, res) {
     //console.log(verifyData);
     //if (userAddress = req.body.userAddress, verifyData.success) {
     if (userAddress = req.body.userAddress) {
+        try {
         const { txId } = await wallet.send([new TokenSendRequest(
             {
                 cashaddr: userAddress,
-                amount: process.env.TOKENAMOUNT,
-                tokenId: process.env.TOKENID
+                amount: tokenAmount,
+                tokenId: token
             }
         )]);
         res.render("index", {
-            content: "You got 200 MESH! You can claim again after 30 minutes",
+            content: "You got 300 MESH! You can claim again after 30 minutes",
             txIds: txId,
             error: null
         });
+        } catch (e) {
+            //console.log("Not enough funds");
+            res.render("index", {
+                content: null,
+                txIds: null,
+                error: "Not enough funds. Send 2000 satoshi to bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc and try again."
+            });
+            alert(error);
+        }
     //} else if (! verifyData.success) {
         //res.render("index", { content: null, txIds: null, image: null, error: "Captcha verification failed" });
         //return;
-    }
+    }    
 });
 
 app.listen(process.env.PORT, () => {

@@ -1,7 +1,7 @@
 {
-  "name": "microfi",
-  "version": "1.0.1",
-  "description": "Microfi Free Flow Bitcoin Cash CashTokens Distribution App",
+  "name": "microfiapp",
+  "version": "1.0.2",
+  "description": "Microfi CashTokens Distribution App on Bitcoin Cash",
   "exports": "./server.js",
   "type": "module",
   "engines": {
@@ -18,10 +18,10 @@
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "express-rate-limit": "^6.9.0",
+    "express-rate-limit": "^6.11.1",
     "hcaptcha": "^0.1.1",
     "helmet": "^7.0.0",
-    "mainnet-js": "^1.1.33",
+    "mainnet-js": "^1.1.34",
     "request-ip": "^3.3.0"
   }
 }
