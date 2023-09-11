@@ -1,5 +1,9 @@
 # Microfi CashTokens Distribution App on Bitcoin Cash
 
+https://microfi.onrender.com
+
+If you have questions join https://t.me/mazetokens
+
 If you like and use the app, consider keeping Microfi website url (https://microfi.eu) in credits
 
 Donate Bitcoin Cash to: bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88
@@ -36,10 +40,6 @@ The total supply of 1 million XMI was distributed for free.
 Distribution ran from May 25, 2023 to June 28, 2023 (https://microfi.onrender.com)
 
 Anyone could claim 100 Microfi Free Flow (XMI) CashTokens every hour.
-
----
-
-Microfi Free Flow website: https://microfi.eu
 
 ---
 
@@ -82,7 +82,3 @@ It is free for users, but you will need to send Bitcoin Cash to the app address 
 ---
 
 You can use [hCaptcha](https://hCaptcha.com/?r=913a126f378f) if you want (need to modify the code a bit: index.ejs, server.js and .env)
-
----
-
-If you have questions join https://t.me/mazetokens
