@@ -91,7 +91,6 @@ app.post("/", apiLimiter, async function (req, res) {
                 txIds: null,
                 error: "Not enough funds. Send 2000 satoshi to bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc and try again."
             });
-            alert(error);
         }
     //} else if (! verifyData.success) {
         //res.render("index", { content: null, txIds: null, image: null, error: "Captcha verification failed" });
