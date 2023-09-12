@@ -18,7 +18,7 @@ app.use(requestIp.mw());
 
 const apiLimiter = rateLimit({
     windowMs: 30 * 60 * 1000, // 30 minutes
-    max: 1,
+    max: 2,
     keyGenerator: function (req, res) {
         return req.clientIp
     },
@@ -48,7 +48,7 @@ app.post("/", apiLimiter, async function (req, res) {
     const wif = process.env.WIF;
     const wallet = await Wallet.fromWIF(wif);
     var userAddress = req.body.userAddress;
-    const tokenAmount = 30000000000; // amount of Cash Tokens to distribute (with decimal places)
+    const tokenAmount = 50000000000; // amount of Cash Tokens to distribute (with decimal places)
     const token = "15b6e0152a4ecb7a561ac0e1f3dca540db8133c520bffdaf532e6d99b4f980e3"; // fungible tokenId (category)
     var blacklistAddress = [ "bitcoincash:zr3p4sja97wku94uayqqxe0lte32hjz62g80zy8ewk" ];
     for (let element of blacklistAddress) {
