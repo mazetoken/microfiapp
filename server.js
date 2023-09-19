@@ -2,7 +2,6 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import helmet from "helmet";
-import bodyParser from "body-parser";
 import rateLimit from "express-rate-limit";
 import requestIp from "request-ip";
 //import { verify } from "hcaptcha";
@@ -29,8 +28,7 @@ const apiLimiter = rateLimit({
 
 app.use(express.static("public"));
 app.use(express.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 //app.all('*', function(req, res, next) {
     //setTimeout(function() {
@@ -47,10 +45,10 @@ app.post("/", apiLimiter, async function (req, res) {
     //const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0");
     const wif = process.env.WIF;
     const wallet = await Wallet.fromWIF(wif);
-    var userAddress = req.body.userAddress;
-    const tokenAmount = 50000000000; // amount of Cash Tokens to distribute (with decimal places)
+    let userAddress = req.body.userAddress;
+    const tokenAmount = 50000000000; // amount of CashTokens to distribute (with decimal places)
     const token = "15b6e0152a4ecb7a561ac0e1f3dca540db8133c520bffdaf532e6d99b4f980e3"; // fungible tokenId (category)
-    var blacklistAddress = [ "bitcoincash:zr3p4sja97wku94uayqqxe0lte32hjz62g80zy8ewk" ];
+    let blacklistAddress = [ "bitcoincash:zr3p4sja97wku94uayqqxe0lte32hjz62g80zy8ewk" ];
     for (let element of blacklistAddress) {
         if (userAddress.includes(element)) {
             res.render("index", { content: null, txIds: null, image: null, error: "Verification failed" });
@@ -89,7 +87,7 @@ app.post("/", apiLimiter, async function (req, res) {
             res.render("index", {
                 content: null,
                 txIds: null,
-                error: "Not enough funds. Send 2000 satoshi to bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc and try again."
+                error: "Not enough funds. Send 2000 satoshi to bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc and try again"
             });
         }
     //} else if (! verifyData.success) {
