@@ -2,6 +2,7 @@
   "name": "microfiapp",
   "version": "1.0.3",
   "description": "Microfi CashTokens Distribution App (faucet) on Bitcoin Cash",
+  "main": "index.ejs",
   "exports": "./server.js",
   "type": "module",
   "engines": {

@@ -3,9 +3,9 @@ dotenv.config();
 import express from "express";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
+import { Config, Wallet, TokenSendRequest } from "mainnet-js";
 import requestIp from "request-ip";
 //import { verify } from "hcaptcha";
-import { Config, Wallet, TokenSendRequest } from "mainnet-js";
 
 Config.EnforceCashTokenReceiptAddresses = true;
 Config.DefaultParentDerivationPath = "m/44'/145'/0'/0/0";
@@ -78,7 +78,7 @@ app.post("/", apiLimiter, async function (req, res) {
             }
         )]);
         res.render("index", {
-            content: "You got 300 MESH! You can claim again after 30 minutes",
+            content: "You got 500 MESH! You can claim again after 30 minutes",
             txIds: txId,
             error: null
         });
