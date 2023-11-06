@@ -1,6 +1,6 @@
 # Microfi CashTokens Distribution App on Bitcoin Cash
 
-https://microfi.onrender.com
+https://microfi.cyclic.cloud
 
 If you have questions join https://t.me/mazetokens
 

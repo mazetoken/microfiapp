@@ -17,7 +17,7 @@ app.use(requestIp.mw());
 
 const apiLimiter = rateLimit({
     windowMs: 30 * 60 * 1000, // 30 minutes
-    max: 1,
+    max: 2,
     keyGenerator: function (req, res) {
         return req.clientIp
     },
@@ -46,7 +46,7 @@ app.post("/", apiLimiter, async function (req, res) {
     const wif = process.env.WIF;
     const wallet = await Wallet.fromWIF(wif);
     let userAddress = req.body.userAddress;
-    const tokenAmount = 50000; // amount of CashTokens to distribute (with decimal places)
+    const tokenAmount = 100000; // amount of CashTokens to distribute (with decimal places)
     const token = "bc1faf2615c0b2bdf94036f40f7b3b7bca87f8e515660905b4c454e150ee4f68"; // fungible tokenId (category)
     //let blacklistAddress = [ "bitcoincash:zr3p4sja97wku94uayqqxe0lte32hjz62g80zy8ewk" ];
     //for (let element of blacklistAddress) {
@@ -78,7 +78,7 @@ app.post("/", apiLimiter, async function (req, res) {
             }
         )]);
         res.render("index", {
-            content: "You got 500 LOLLIPOP! You can claim again after 30 minutes",
+            content: "You got 1000 LOLLIPOP! You can claim again after 30 minutes",
             txIds: txId,
             error: null
         });
