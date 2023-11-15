@@ -1,5 +1,7 @@
 # Microfi Free Flow CashTokens Distribution Application on Bitcoin Cash
 
+v. 1.0.3
+
 The app can distribute CashTokens. Application/token creator or users can pay blockchain transactions fee
 
 https://microfi.cyclic.cloud
@@ -10,7 +12,7 @@ Donate Bitcoin Cash to: bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88
 
 ---
 
-To try the app with your CashTokens, you need to download the repository, change the wallet and token details in the "example_env.txt" and rename it to ".env". Change `views/index.ejs` and `server.js` for your needs (e.g. token details, hCaptcha, etc.). You can use a wallet seed phrese instead of WIF. If you like and use the app, consider keeping Microfi website url (https://microfi.eu) in credits
+To try the app with your CashTokens, you need to download the repository, change the wallet details in the "example_env.txt" and rename it to ".env". Change `views/index.ejs` and `server.js` for your needs (e.g. token details, hCaptcha, etc.). You can use a wallet seed phrese instead of WIF. If you like and use the app, consider keeping Microfi website url (https://microfi.eu) in credits. You can use e.g. [Electron Cash wallet](https://electroncash.org) to distribute tokens or [Microfi wallet](https://microfi.eu/wallet). Use separate wallet (for distribution only). Claim is free for users, but you will need to send CashTokens and Bitcoin Cash to the app wallet address. Alternatively users can pay transactinion fee (about 2000 satoshi) if your app wallet address has 0 BCH. You can use [hCaptcha](https://hCaptcha.com/?r=913a126f378f) if you want (you need to modify the code a bit: index.ejs, server.js and .env)
 
 `#SEED="wallet seed phrase"`
 `WIF="wallet private key"`
@@ -36,14 +38,6 @@ Create a new web service, connect Git repository, set Environment variables (cop
 Build command `npm i`
 
 Start command `npm start`
-
----
-
-You can use e.g. [Electron Cash wallet](https://electroncash.org) to distribute tokens or [Microfi wallet](https://microfi.eu/wallet)
-
-It is free for users, but you will need to send CashTokens and Bitcoin Cash to the app wallet address. Alternatively users can pay transactinion fee (about 2000 satoshi) if your app wallet address has 0 BCH.
-
-You can use [hCaptcha](https://hCaptcha.com/?r=913a126f378f) if you want (need to modify the code a bit: index.ejs, server.js and .env)
 
 ---
 
