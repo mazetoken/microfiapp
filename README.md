@@ -1,33 +1,36 @@
-# Microfi CashTokens Distribution App on Bitcoin Cash
+# Microfi Free Flow CashTokens Distribution Application on Bitcoin Cash
+
+The app can distribute CashTokens. Application/token creator or users can pay blockchain transactions fee
 
 https://microfi.cyclic.cloud
 
 If you have questions join https://t.me/mazetokens
 
-If you like and use the app, consider keeping Microfi website url (https://microfi.eu) in credits
-
 Donate Bitcoin Cash to: bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88
 
 ---
 
-To try the app with your CashTokens, you need to download the repository, change the wallet and token details in the "example_env.txt" and rename it to ".env". Change `views/index.ejs` and `server.js` for your needs (e.g. token details, hCaptcha, etc.). You can use a wallet seed phrese instead of WIF
+To try the app with your CashTokens, you need to download the repository, change the wallet and token details in the "example_env.txt" and rename it to ".env". Change `views/index.ejs` and `server.js` for your needs (e.g. token details, hCaptcha, etc.). You can use a wallet seed phrese instead of WIF. If you like and use the app, consider keeping Microfi website url (https://microfi.eu) in credits
 
 `#SEED="wallet seed phrase"`
 `WIF="wallet private key"`
 `#HCAPTCHA_SECRET=`
 `PORT=3000`
 
-Open a command line and run:
+You need nodejs installed on your system. Open a command line (e.g. PowerShell), navigate to the app directory and run:
 
 `npm i`
 `npm start`
 
-Open browser: localhost:3000
+Open browser and type: localhost:3000
 
 ---
 
-You can host the app on e.g. https://onrender.com
+You can host the app on e.g. https://cyclic.sh or  https://onrender.com for free
 
+Render tutorial:
+
+Create an account on Render.
 Create a new web service, connect Git repository, set Environment variables (copy/paste `Key` and `Value`  from .env, without " " and without PORT) and in settings use:
 
 Build command `npm i`
