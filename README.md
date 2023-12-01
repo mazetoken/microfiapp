@@ -28,7 +28,7 @@ Open browser and type: localhost:3000
 
 ---
 
-You can host the app on e.g. https://cyclic.sh or  https://onrender.com for free
+You can host the app on e.g. https://cyclic.sh or https://onrender.com for free
 
 Render tutorial:
 
