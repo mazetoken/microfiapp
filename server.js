@@ -21,7 +21,7 @@ const apiLimiter = rateLimit({
     keyGenerator: function (req, res) {
         return req.clientIp
     },
-    message: "Too many requests, please try again in 30 minutes",
+    message: "Too many requests, please try again in 20 minutes",
 	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
@@ -48,7 +48,7 @@ app.post("/", apiLimiter, async function (req, res) {
     let userAddress = req.body.userAddress;
     const tokenAmount = 500000; // amount of CashTokens to distribute (with decimal places)
     const token = "bc1faf2615c0b2bdf94036f40f7b3b7bca87f8e515660905b4c454e150ee4f68"; // fungible tokenId (category)
-    //let blacklistAddress = [ "bitcoincash:zr3p4sja97wku94uayqqxe0lte32hjz62g80zy8ewk" ];
+    //let blacklistAddress = [ "bitcoincash:z" ];
     //for (let element of blacklistAddress) {
         //if (userAddress.includes(element)) {
             //res.render("index", { content: null, txIds: null, image: null, error: "Verification failed" });
@@ -73,7 +73,7 @@ app.post("/", apiLimiter, async function (req, res) {
         const { txId } = await wallet.send([new TokenSendRequest(
             {
                 cashaddr: userAddress,
-                amount: tokenAmount,
+                amount: BigInt(tokenAmount),
                 tokenId: token
             }
         )]);
