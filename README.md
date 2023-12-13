@@ -1,8 +1,8 @@
 # Microfi Free Flow CashTokens Distribution Application on Bitcoin Cash
 
-v. 1.0.3
+The app can distribute CashTokens (this is not a DEX or swap application). Claiming CashTokens can be free for users, but you will have to send CashTokens and Bitcoin Cash to the app wallet address (you pay blockchain transaction fee). Alternatively users can pay transactinion fee (about 2000 satoshi) if your app wallet address has 0 BCH.
 
-The app can distribute CashTokens. Application/token creator or users can pay blockchain transactions fee
+Try it:
 
 https://microfi.cyclic.cloud
 
@@ -12,7 +12,7 @@ Donate Bitcoin Cash to: bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88
 
 ---
 
-To try the app with your CashTokens, you need to download the repository, change the wallet details in the "example_env.txt" and rename it to ".env". Change `views/index.ejs` and `server.js` for your needs (e.g. token details, hCaptcha, etc.). You can use a wallet seed phrese instead of WIF. If you like and use the app, consider keeping Microfi website url (https://microfi.eu) in credits. You can use e.g. [Electron Cash wallet](https://electroncash.org) to distribute tokens or [Microfi wallet](https://microfi.eu/wallet). Use separate wallet (for distribution only). Claim is free for users, but you will need to send CashTokens and Bitcoin Cash to the app wallet address. Alternatively users can pay transactinion fee (about 2000 satoshi) if your app wallet address has 0 BCH. You can use [hCaptcha](https://hCaptcha.com/?r=913a126f378f) if you want (you need to modify the code a bit: index.ejs, server.js and .env)
+To try the app with your CashTokens, you need to download the repository, change the wallet details in the "example_env.txt" and rename it to ".env". Change `views/index.ejs` and `server.js` for your needs (e.g. token details, hCaptcha, etc.). You can use a wallet seed phrese instead of WIF. If you like and use the app, consider keeping Microfi website url (https://microfi.eu) in credits. You can use e.g. [Electron Cash wallet](https://electroncash.org) to distribute tokens or [Microfi wallet](https://microfi.eu/wallet). Use separate wallet (for distribution only). You can use [hCaptcha](https://hCaptcha.com/?r=913a126f378f) if you want (you need to modify the code a bit: index.ejs, server.js and .env and run `npm i hcaptcha`)
 
 `#SEED="wallet seed phrase"`
 `WIF="wallet private key"`
@@ -28,7 +28,7 @@ Open browser and type: localhost:3000
 
 ---
 
-You can host the app on e.g. https://cyclic.sh or https://onrender.com for free
+You can host the app on e.g. https://cyclic.sh or  https://onrender.com for free
 
 Render tutorial:
 
@@ -41,13 +41,19 @@ Start command `npm start`
 
 ---
 
+v. 1.0.4
+
+- support for Big Integer for fungible CashTokens (mainnet.js 2.3.0)
+
+v. 1.0.3
+
+- npm packages update, minor fixes
+
 v. 1.0.2
 
 - removed token amount and tokenId from env (it is in server.js now)
 
 - updated frontend to collect a small amount of BCH if there are no funds in the app wallet
-
----
 
 v. 1.0.1
 
@@ -61,7 +67,6 @@ v. 1.0.1
 
 - hCaptcha is optional (add/remove comments `//` in server.js and `<!-- -->` in index.ejs and remove comment `#` in .env)
 
---- 
 v. 1.0.0
 
 Microfi Free Flow (XMI) Bitcoin Cash CashTokens.
