@@ -46,8 +46,8 @@ app.post("/", apiLimiter, async function (req, res) {
     const wif = process.env.WIF;
     const wallet = await Wallet.fromWIF(wif);
     let userAddress = req.body.userAddress;
-    const tokenAmount = 500000; // amount of CashTokens to distribute (with decimal places)
-    const token = "bc1faf2615c0b2bdf94036f40f7b3b7bca87f8e515660905b4c454e150ee4f68"; // fungible tokenId (category)
+    const tokenAmount = 200000000000; // amount of CashTokens to distribute (with decimal places)
+    const token = "4a3cf93cc0921e64c1f6dd6f8e348888be5e289d0b4f6cedb9b718b8d9590259"; // fungible tokenId (category)
     //let blacklistAddress = [ "bitcoincash:z" ];
     //for (let element of blacklistAddress) {
         //if (userAddress.includes(element)) {
@@ -78,7 +78,7 @@ app.post("/", apiLimiter, async function (req, res) {
             }
         )]);
         res.render("index", {
-            content: "You got 5000 LOLLIPOP! You can claim again after 20 minutes",
+            content: "You got 2000 DARK CRC20 CashTokens! You can claim again after 20 minutes",
             txIds: txId,
             error: null
         });
