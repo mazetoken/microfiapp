@@ -55,13 +55,13 @@ app.post("/", apiLimiter, async function (req, res) {
             //return;
         //}
     //}
-    if (userAddress != req.body.userAddress) {
+    if (userAddress =! req.body.userAddress) {
         res.render("index", { content: null, txIds: null, image: null, error: "You need to provide CashTokens aware address- bitcoincash:z..." });
         return; 
     }
     let text = req.body.userAddress;
     let result = text.match("bitcoincash:z");
-    if (userAddress != result) {
+    if (userAddress =! result) {
         res.render("index", { content: null, txIds: null, image: null, error: "You need to provide CashTokens aware address- bitcoincash:z..." });
         return; 
     }
