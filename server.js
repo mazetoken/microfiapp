@@ -68,7 +68,6 @@ app.post("/", apiLimiter, async function (req, res) {
     const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
     //console.log(verifyData);
     if (userAddress = req.body.userAddress, verifyData.success) {
-    if (userAddress = req.body.userAddress) {
         try {
         const { txId } = await wallet.send([new TokenSendRequest(
             {
@@ -94,7 +93,6 @@ app.post("/", apiLimiter, async function (req, res) {
         res.render("index", { content: null, txIds: null, image: null, error: "Captcha verification failed" });
         return;
     }
-    };  
 });
 
 app.listen(process.env.PORT, () => {
