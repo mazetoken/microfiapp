@@ -5,7 +5,7 @@ import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import { Config, Wallet, TokenSendRequest } from "mainnet-js";
 import requestIp from "request-ip";
-//import { verify } from "hcaptcha";
+import { verify } from "hcaptcha";
 
 Config.EnforceCashTokenReceiptAddresses = true;
 Config.DefaultParentDerivationPath = "m/44'/145'/0'/0/0";
@@ -55,19 +55,19 @@ app.post("/", apiLimiter, async function (req, res) {
             //return;
         //}
     //}
-    if (userAddress =! req.body.userAddress) {
+    if (userAddress != req.body.userAddress) {
         res.render("index", { content: null, txIds: null, image: null, error: "You need to provide CashTokens aware address- bitcoincash:z..." });
         return; 
     }
     let text = req.body.userAddress;
     let result = text.match("bitcoincash:z");
-    if (userAddress =! result) {
+    if (userAddress != result) {
         res.render("index", { content: null, txIds: null, image: null, error: "You need to provide CashTokens aware address- bitcoincash:z..." });
         return; 
     }
-    //const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
+    const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
     //console.log(verifyData);
-    //if (userAddress = req.body.userAddress, verifyData.success) {
+    if (userAddress = req.body.userAddress, verifyData.success) {
     if (userAddress = req.body.userAddress) {
         try {
         const { txId } = await wallet.send([new TokenSendRequest(
@@ -78,7 +78,7 @@ app.post("/", apiLimiter, async function (req, res) {
             }
         )]);
         res.render("index", {
-            content: "You got 2000 DARK CRC20 CashTokens! You can claim again after 20 minutes",
+            content: "You got 2000 DARK CRC20 CashTokens! You can claim again after 10 minutes",
             txIds: txId,
             error: null
         });
@@ -90,10 +90,11 @@ app.post("/", apiLimiter, async function (req, res) {
                 error: "Not enough funds. Send 2000 satoshi to bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc and try again"
             });
         }
-    //} else if (! verifyData.success) {
-        //res.render("index", { content: null, txIds: null, image: null, error: "Captcha verification failed" });
-        //return;
-    }    
+    } else if (! verifyData.success) {
+        res.render("index", { content: null, txIds: null, image: null, error: "Captcha verification failed" });
+        return;
+    }
+    };  
 });
 
 app.listen(process.env.PORT, () => {
