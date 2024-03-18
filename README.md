@@ -4,7 +4,7 @@ The app can distribute CashTokens (this is not a DEX or swap application). Claim
 
 Try it:
 
-https://microfi.cyclic.cloud
+https://microfi.cyclic.cloud or alternatively https://microfi.onrender.com
 
 If you have questions join https://t.me/mazetokens
 
@@ -12,7 +12,7 @@ Donate Bitcoin Cash to: bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88
 
 ---
 
-To try the app with your CashTokens, you need to download the repository, change the wallet details in the "example_env.txt" and rename it to ".env". Change `views/index.ejs` and `server.js` for your needs (e.g. token details, hCaptcha, etc.). You can use a wallet seed phrese instead of WIF. If you like and use the app, consider keeping Microfi website url (https://microfi.eu) in credits. You can use e.g. [Electron Cash wallet](https://electroncash.org) to distribute tokens or [Microfi wallet](https://microfi.eu/wallet). Use separate wallet (for distribution only). You can use [hCaptcha](https://hCaptcha.com/?r=913a126f378f) if you want (you need to modify the code a bit: index.ejs, server.js and .env and run `npm i hcaptcha`)
+To try the app with your CashTokens, you need to download the repository, change the wallet details in the "example_env.txt" and rename it to ".env". Change `views/index.ejs`, `server.js`, `serviceWorker.js` and `manifest.json` for your needs (token and website details, hCaptcha, etc.) in e.g. Visual Studio Code. You can use a wallet seed phrase instead of WIF (in .env: remove comment `#` next to SEED and add `#` next to WIF). If you like and use the app, consider keeping Microfi website url (https://microfi.eu) in credits. You can use e.g. [Electron Cash wallet](https://electroncash.org) to distribute tokens, [Microfi wallet](https://microfi.eu/wallet) or even [Microfi paper wallet](https://microfi.eu/paperwallet). Use separate wallet (for distribution only). You can use [hCaptcha](https://hCaptcha.com/?r=913a126f378f) if you want (you need to modify the code a bit: index.ejs, server.js and .env)
 
 `#SEED="wallet seed phrase"`
 `WIF="wallet private key"`
@@ -28,7 +28,7 @@ Open browser and type: localhost:3000
 
 ---
 
-You can host the app on e.g. https://cyclic.sh or  https://onrender.com for free
+You can host the app on e.g. https://cyclic.sh (1000 API requests/month, no sleep time) or https://onrender.com (sleeps after 30 minutes of inactivity).
 
 Render tutorial:
 
@@ -40,6 +40,9 @@ Build command `npm i`
 Start command `npm start`
 
 ---
+v. 1.0.5
+
+- minor updates (pakages, website - Progressive Web App (PWA))
 
 v. 1.0.4
 

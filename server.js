@@ -16,7 +16,7 @@ app.set('trust proxy', 1);
 app.use(requestIp.mw());
 
 const apiLimiter = rateLimit({
-    windowMs: 20 * 60 * 1000, // 20 minutes
+    windowMs: 10 * 60 * 1000, // 10 minutes
     max: 2,
     keyGenerator: function (req, res) {
         return req.clientIp
