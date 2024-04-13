@@ -5,7 +5,6 @@ import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import { Config, Wallet, TokenSendRequest } from "mainnet-js";
 import requestIp from "request-ip";
-//import { verify } from "hcaptcha";
 
 Config.EnforceCashTokenReceiptAddresses = true;
 Config.DefaultParentDerivationPath = "m/44'/145'/0'/0/0";
@@ -46,16 +45,17 @@ app.post("/", apiLimiter, async function (req, res) {
     const wif = process.env.WIF;
     const wallet = await Wallet.fromWIF(wif);
     let userAddress = req.body.userAddress;
+    let number = req.body.number; // captcha number
     const tokenAmount = 200000000000; // amount of CashTokens to distribute (with decimal places)
     const token = "4a3cf93cc0921e64c1f6dd6f8e348888be5e289d0b4f6cedb9b718b8d9590259"; // fungible tokenId (category)
-    //let blacklistAddress = [ "bitcoincash:z" ];
+    //let blacklistAddress = [ "bitcoincash:...", "bitcoincash:..." ];
     //for (let element of blacklistAddress) {
         //if (userAddress.includes(element)) {
             //res.render("index", { content: null, txIds: null, image: null, error: "Verification failed" });
             //return;
         //}
     //}
-    if (userAddress =! req.body.userAddress) {
+    if (userAddress =! req.body.userAddress, number =! req.body.number) {
         res.render("index", { content: null, txIds: null, image: null, error: "You need to provide CashTokens aware address- bitcoincash:z..." });
         return; 
     }
@@ -65,16 +65,14 @@ app.post("/", apiLimiter, async function (req, res) {
         res.render("index", { content: null, txIds: null, image: null, error: "You need to provide CashTokens aware address- bitcoincash:z..." });
         return; 
     }
-    //const verifyData = await verify(process.env.HCAPTCHA_SECRET, req.body["h-captcha-response"]);
-    //console.log(verifyData);
-    //if (userAddress = req.body.userAddress, verifyData.success) {
-    if (userAddress = req.body.userAddress) {
+    if (userAddress = req.body.userAddress, number = req.body.number) {
         try {
         const { txId } = await wallet.send([new TokenSendRequest(
             {
                 cashaddr: userAddress,
                 amount: BigInt(tokenAmount),
-                tokenId: token
+                tokenId: token,
+                value: 800
             }
         )]);
         res.render("index", {
@@ -90,9 +88,6 @@ app.post("/", apiLimiter, async function (req, res) {
                 error: "Not enough funds. Send 2000 satoshi to bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc and try again"
             });
         }
-    //} else if (! verifyData.success) {
-        //res.render("index", { content: null, txIds: null, image: null, error: "Captcha verification failed" });
-        //return;
     };
 });
 

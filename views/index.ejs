@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Microfi Free Flow CashTokens Distribution App (faucet) on Bitcoin Cash" />
+  <meta name="description" content="Microfi CashTokens Distribution App (faucet) on Bitcoin Cash" />
   <meta name="web" content="https://microfi.cyclic.cloud" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta property="og:title" content="Microfi Free Flow CashTokens Distribution App" />
-	<meta property="og:description" content="Microfi Free Flow CashTokens Distribution App (faucet) on Bitcoin Cash" />
+	<meta property="og:title" content="Microfi CashTokens Distribution App" />
+	<meta property="og:description" content="Microfi CashTokens Distribution App (faucet) on Bitcoin Cash" />
 	<meta property="og:image" content="https://microfi.eu/img/microfi_app.png" />
-  <title>Microfi Free Flow CashTokens Distribution App</title>
+  <title>Microfi CashTokens Distribution App</title>
   <link rel="icon" type="image/png" sizes="42x42" href="./img/microfi_app.png" />
   <style>
     body {
@@ -34,92 +34,110 @@
       background-color: transparent;
       text-decoration: none;
     }
-    @media screen and (max-width: 500px) {}
+    @media screen and (max-width: 500px) {
+      p img {
+		    max-width: 95%;
+	    }
+    }
   </style>
-  <link rel="manifest" href="./manifest.json" />
-	<!-- ios support -->
-  <link rel="apple-touch-icon" href="./public/img/icons/96.png" />
-	<link rel="apple-touch-icon" href="./public/img/icons/128.png" />
-	<link rel="apple-touch-icon" href="./public/img/icons/192.png" />
-	<link rel="apple-touch-icon" href="./public/img/icons/384.png" />
-	<meta name="apple-mobile-web-app-status-bar" content="#ffffff" />
-	<meta name="theme-color" content="#ffffff" />
-  <!-- <script src="https://js.hcaptcha.com/1/api.js" async defer></script> -->
 </head>
 <body>
   <div>
-    <p><img src="./img/microfi.png" alt="microfi" width="400"></p>
+    <p><img src="./img/microfi_app_cover.png" alt="microfi" width="500"></p>
     <p><img src="./img/bitcoin-cash-logo.png" alt="BCH" width="200"></p>
-    <p><i>Discover the power of <a href="https://cashtokens.org">CashTokens</a> with Microfi Free Flow CashTokens Distribution App</i></p>
-    <hr>
+    <p><i>Discover the power of <a href="https://cashtokens.org">CashTokens</a> with Microfi CashTokens Distribution App</i></p>
   </div>
+  <br>
+  <hr>
   <div>
     <h3>Currently distributed token:</h3>
-    <p>No distribution for now</p>
-    <!-- <h3>DARK CRC20 CashTokens</h3>
+    <h3>DARK CRC20 CashTokens</h3>
     <p>
-      Name: DARK<br>
-      Symbol: DARK<br>
+      Name: <b>DARK</b><br>
+      Symbol: <b>DARK</b><br>
       Decimals: 8<br>
       TokenId:<br><a href="https://explorer.salemkode.com/token/4a3cf93cc0921e64c1f6dd6f8e348888be5e289d0b4f6cedb9b718b8d9590259">4a3cf93cc0921e64c1f6dd6f8e348888be5e289d0b4f6cedb9b718b8d9590259</a>
     </p>
     <p><img src="./img/dark.png" width="200"></p>
-    <p>Copy Dark Labs Bitcoin Cash Metadata Registry <a href="https://darklabs.pages.dev/.well-known/bitcoin-cash-metadata-registry.json">BCMR url</a> and add it to explorer to see icons and tokens details.</p>
+    <p>Copy Dark Labs Bitcoin Cash Metadata Registry <a href="https://darklabs.pages.dev/.well-known/bitcoin-cash-metadata-registry.json">BCMR url</a> and add it to the <a href="https://explorer.salemkode.com/registers">explorer</a> registers to see icons and tokens details.</p>
     <p>For more information, please visit <a href="https://darklabs.pages.dev">Dark Labs</a> CashTokens website.</p>
-    <br>
     <h3>Claim 2000 DARK<br>every 10 minutes</h3>
-    <p>It`s free or almost free.</p>
-    <p>If there are no funds, send 2000 satoshi (0.00002 BCH) to:</p>
-    <p>bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc<br><br>
-      <img src="./img/qrcode1.png" alt="qr1" width="200"><br><br>
-      and click Claim button below.
+    <p>It`s free or almost free. You need Bitcoin Cash CashTokens aware address (bitcoincash:z...).</p>
+    <!-- <p>If there are no funds, send 2000 satoshi (0.00002 BCH) to:</p> -->
+    <p id="faucetAddr">If there are no funds, send 2000 satoshi (0.00002 BCH) to:<br><span class="copyButton" id="faucetAddr">bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc</span>
+      <button type="button" style="padding: 0;" onclick="copyTextContent('faucetAddr')">
+        <img class="copyIcon" src="https://icongr.am/clarity/copy.svg?size=16&color=747681">
+      </button>
     </p>
-    <p>You need Bitcoin Cash CashTokens aware address (bitcoincash:z...) to claim DARK.<br>
-      Do not send more than 2000 satoshi at a time. This is used as blockchain transaction fee. No fee for tokens distributor.<br>
-      Do not try to automate claims.
+    <p><img src="./img/qrcode1.png" alt="qr1" width="200"></p>
+    <p>Do not send more than 2000 satoshi at a time.<br>This is used as blockchain transaction fee. No fee for tokens distributor.<br>
+      Fill the simple captcha number and click/tap Claim button below.
     </p>
-    <form action="/" method="post">
-      <input type="text" name="userAddress" size="56" placeholder="bitcoincash:z..."><br>
-      <br> -->
-      <!-- <div class="h-captcha" data-sitekey="18b02976-2241-4563-87e9-1ce821fe7f7e"></div>
-      <br> -->
-      <!-- <input type="submit" value="Claim"><br>
-    </form> -->
-    <br>
-    <p><%= content %></p>
-    <p><a href="https://explorer.bitcoinunlimited.info/tx/<%= txIds %>"><%= txIds %></a></p>
-    <p><%= error %></p>
-    <br>
-    <hr>
   </div>
   <div>
-    <p>Previously distributed tokens:</p>
-    <p><a href="https://darklabs.pages.dev">DARK</a> CRC20 CashTokens <img src="./img/dark.png" width="46"><br>
-      1 million distributed. Distribution ran to March 19, 2024
+    <p>
+    <form class="input" action="/" method="post">
+      <label for="userAddress" class="title">
+        <p>Your Bitcoin Cash wallet address:</p>
+      </label>
+      <input type="text" name="userAddress" required="required" size="56" placeholder="bitcoincash:z..."><br>
+      <label for="number" class="title">
+        <p>What is two plus eight?</p>
+      </label>
+      <input
+        type="text"
+        name="number" 
+        required="required"
+        placeholder="2 + 8 = ?"
+        pattern="(10|ten)" 
+        oninvalid="this.setCustomValidity('Sorry, please enter the correct answer')"
+        oninput="this.setCustomValidity('')"
+      >
+      <input name="decoy" style="display: none;" />
+      <br><br>
+      <input type="submit" value="Claim"><br>
+    </form>
     </p>
+    <!-- <form action="/" method="post">
+      <input type="text" name="userAddress" size="56" placeholder="bitcoincash:z..."><br>
+      <br>
+      <input type="submit" value="Claim"><br>
+    </form> -->
+    <p><%= content %></p>
+    <p><a href="https://explorer.salemkode.com/tx/<%= txIds %>"><%= txIds %></a></p>
+    <p><%= error %></p>
+    <br>
+    <p><img src="./img/dark2.png" width="200"></p>
+  </div>
+  <br>
+  <hr>
+  <div>
+    <p>Previously distributed tokens:</p>
     <p><a href="https://darklabs.pages.dev">LOLLIPOP</a> CRC20 CashTokens <img src="./img/lollipop.png" width="46"><br>
-      1 million distributed. Distribution ran to March 17, 2024
+      Distribution ran to March 15, 2024
     </p>
     <p><a href="https://darklabs.pages.dev">MESH</a> CRC20 CashTokens <img src="./img/mesh.png" width="46"><br>
-      100k distributed. Distribution ran to October 2, 2023
+      Distribution ran to October 2, 2023
     </p>
     <p><a href="https://microfi.eu/token">Microfi Free Flow</a> (XMI) CashTokens <img src="./img/microfi_icon.png" width="46"><br>
-      Total supply of 1 million distributed. Distribution ran from May 25, 2023 to June 28, 2023
+      Distribution ran from May 25, 2023 to June 28, 2023
     </p>
-    <br>
-    <p>To support Microfi Free Flow Project, consider donating a small amount of BCH to:</p>
-    <p>bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88<br><br>
-      <img src="./img/qrcode2.png" alt="qr2" width="200"><br>
-    </p>
-    <hr>
   </div>
+  <br>
+  <div>
+    <p id="donateAddr">Consider donating a small amount of BCH to:<br><span class="copyButton" id="donateAddr">bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88</span>
+      <button type="button" style="padding: 0;" onclick="copyTextContent('donateAddr')">
+        <img class="copyIcon" src="https://icongr.am/clarity/copy.svg?size=16&color=747681">
+      </button>
+    </p>
+    <p><img src="./img/qrcode2.png" alt="qr2" width="200"></p>
+  </div>
+  <br>
+  <hr>
   <footer>
     <p>Credits:<br><a href="https://mainnet.cash">mainnet.cash</a></p>
-    <br>
-    <p>This website can be installed as Progressive Web Application (PWA) and added to mobile home screen as an app.</p>
-    <p></a><a href="https://github.com/mazetoken/microfiapp/"><img src="./img/githubwhite.png" alt="Github" width="36"></a> <a href="https://microfi.eu"><img src= "./img/microfi_icon.png" alt="Microfi" width="36"> <a href="https://t.me/mazetokens"><img src="./img/telegram.png" alt="TelegramIcon" width="36"></a></p>
+    <p><img src="./img/mtu.png" alt="MTU" width="36"> <a href="https://github.com/mazetoken/microfiapp/"><img src="./img/githubwhite.png" alt="Github" width="36"></a> <a href="https://microfi.eu"><img src= "./img/microfi_icon.png" alt="Microfi" width="36"> <a href="https://t.me/mazetokens"><img src="./img/telegram.png" alt="TelegramIcon" width="36"></a></p>
     <p>Maze Tokens Underworld, 2020-2024</p>
-    <p>Microfi Free Flow Project, 2023-2024</p>
   </footer>
   <br>
   <script src="./server.js" type="application/octet-stream"></script>

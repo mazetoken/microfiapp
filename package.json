@@ -1,7 +1,7 @@
 {
   "name": "microfiapp",
   "version": "1.0.5",
-  "description": "Microfi Free Flow CashTokens Distribution App (faucet) on Bitcoin Cash",
+  "description": "Microfi CashTokens Distribution App (faucet) on Bitcoin Cash",
   "main": "index.ejs",
   "exports": "./server.js",
   "type": "module",
@@ -16,10 +16,9 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "ejs": "^3.1.9",
-    "express": "^4.18.3",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
     "express-rate-limit": "^7.2.0",
-    "hcaptcha": "^0.1.1",
     "helmet": "^7.1.0",
     "mainnet-js": "^2.3.11",
     "request-ip": "^3.3.0"

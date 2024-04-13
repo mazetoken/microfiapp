@@ -12,11 +12,10 @@ Donate Bitcoin Cash to: bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88
 
 ---
 
-To try the app with your CashTokens, you need to download the repository, change the wallet details in the "example_env.txt" and rename it to ".env". Change `views/index.ejs`, `server.js`, `serviceWorker.js` and `manifest.json` for your needs (token and website details, hCaptcha, etc.) in e.g. Visual Studio Code. You can use a wallet seed phrase instead of WIF (in .env: remove comment `#` next to SEED and add `#` next to WIF). If you like and use the app, consider keeping Microfi website url (https://microfi.eu) in credits. You can use e.g. [Electron Cash wallet](https://electroncash.org) to distribute tokens, [Microfi wallet](https://microfi.eu/wallet) or even [Microfi paper wallet](https://microfi.eu/paperwallet). Use separate wallet (for distribution only). You can use [hCaptcha](https://hCaptcha.com/?r=913a126f378f) if you want (you need to modify the code a bit: index.ejs, server.js and .env)
+To try the app with your CashTokens, you need to download the repository, change the wallet details in the "example_env.txt" and rename it to ".env". Change `views/index.ejs`, `server.js` for your needs (token and website details, etc.) in e.g. Visual Studio Code. You can use a wallet seed phrase instead of WIF (in .env: remove comment `#` next to SEED and add `#` next to WIF). If you like and use the app, consider keeping Microfi website url (https://microfi.eu) in credits. You can use e.g. [Electron Cash wallet](https://electroncash.org) to distribute tokens, [Microfi wallet](https://microfi.eu/wallet) or even [Microfi paper wallet](https://microfi.eu/paperwallet). Use separate wallet (for distribution only).
 
 `#SEED="wallet seed phrase"`
 `WIF="wallet private key"`
-`#HCAPTCHA_SECRET=`
 `PORT=3000`
 
 You need nodejs installed on your system. Open a command line (e.g. PowerShell), navigate to the app directory and run:
@@ -40,9 +39,15 @@ Build command `npm i`
 Start command `npm start`
 
 ---
+v. 1.0.6
+
+- minor updates (packages, website - removed PWA, added a simple custom captcha)
+
+- distribute DARK CashTokens
+
 v. 1.0.5
 
-- minor updates (pakages, website - Progressive Web App (PWA))
+- minor updates (packages, website - Progressive Web App (PWA))
 
 v. 1.0.4
 
