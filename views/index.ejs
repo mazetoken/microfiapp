@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Microfi CashTokens Distribution App (faucet) on Bitcoin Cash" />
-  <meta name="web" content="https://microfi.cyclic.cloud" />
+  <meta name="description" content="Microfi CashTokens Distribution Application (faucet) on Bitcoin Cash" />
+  <meta name="web" content="https://microfi.onrender.com" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta property="og:title" content="Microfi CashTokens Distribution App" />
-	<meta property="og:description" content="Microfi CashTokens Distribution App (faucet) on Bitcoin Cash" />
+	<meta property="og:description" content="Microfi CashTokens Distribution Application (faucet) on Bitcoin Cash" />
 	<meta property="og:image" content="https://microfi.eu/img/microfi_app.png" />
   <title>Microfi CashTokens Distribution App</title>
   <link rel="icon" type="image/png" sizes="42x42" href="./img/microfi_app.png" />
@@ -63,12 +63,7 @@
     <p>For more information, please visit <a href="https://darklabs.pages.dev">Dark Labs</a> CashTokens website.</p>
     <h3>Claim 1800 DARK<br>every 10 minutes</h3>
     <p>It`s free or almost free. You need Bitcoin Cash CashTokens aware address (bitcoincash:z...).</p>
-    <!-- <p>If there are no funds, send 2000 satoshi (0.00002 BCH) to:</p> -->
-    <p id="faucetAddr">If there are no funds, send 1800 satoshi (0.000018 BCH) to:<br><span class="copyButton" id="faucetAddr">bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc</span>
-      <button type="button" style="padding: 0;" onclick="copyTextContent('faucetAddr')">
-        <img class="copyIcon" src="https://icongr.am/clarity/copy.svg?size=16&color=747681">
-      </button>
-    </p>
+    <p>If there are no funds, send 1800 satoshi (0.000018 BCH) to:<br>bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc</p>
     <p><img src="./img/qrcode1.png" alt="qr1" width="200"></p>
     <p>Do not send more than 1800 satoshi at a time.<br>This is used as blockchain transaction fee. No fee for tokens distributor.<br>
       Fill the simple captcha number and click/tap Claim button below.
@@ -98,11 +93,6 @@
       <input type="submit" value="Claim"><br>
     </form>
     </p>
-    <!-- <form action="/" method="post">
-      <input type="text" name="userAddress" size="56" placeholder="bitcoincash:z..."><br>
-      <br>
-      <input type="submit" value="Claim"><br>
-    </form> -->
     <p><%= content %></p>
     <p><a href="https://explorer.salemkode.com/tx/<%= txIds %>"><%= txIds %></a></p>
     <p><%= error %></p>
@@ -125,11 +115,7 @@
   </div>
   <br>
   <div>
-    <p id="donateAddr">Consider donating a small amount of BCH to:<br><span class="copyButton" id="donateAddr">bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88</span>
-      <button type="button" style="padding: 0;" onclick="copyTextContent('donateAddr')">
-        <img class="copyIcon" src="https://icongr.am/clarity/copy.svg?size=16&color=747681">
-      </button>
-    </p>
+    <p>Consider donating a small amount of BCH to:<br>bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88</p>
     <p><img src="./img/qrcode2.png" alt="qr2" width="200"></p>
   </div>
   <br>
