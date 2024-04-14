@@ -16,11 +16,11 @@ app.use(requestIp.mw());
 
 const apiLimiter = rateLimit({
     windowMs: 10 * 60 * 1000, // 10 minutes
-    max: 1,
+    max: 2,
     keyGenerator: function (req, res) {
         return req.clientIp
     },
-    message: "Too many requests, please try again in 20 minutes",
+    message: "Too many requests, please try again in 10 minutes",
 	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
@@ -85,7 +85,7 @@ app.post("/", apiLimiter, async function (req, res) {
             res.render("index", {
                 content: null,
                 txIds: null,
-                error: "Not enough funds. Send 1800 satoshi to bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc and try again"
+                error: "No luck. Someone was faster or there are not enough funds. Try again."
             });
         }
     };
