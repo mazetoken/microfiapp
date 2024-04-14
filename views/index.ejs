@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Microfi CashTokens Distribution Application (faucet) on Bitcoin Cash" />
-  <meta name="web" content="https://microfi.onrender.com" />
+  <meta name="description" content="Microfi CashTokens Distribution App (faucet) on Bitcoin Cash" />
+  <meta name="web" content="https://microfi.cyclic.cloud" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta property="og:title" content="Microfi CashTokens Distribution App" />
-	<meta property="og:description" content="Microfi CashTokens Distribution Application (faucet) on Bitcoin Cash" />
+	<meta property="og:description" content="Microfi CashTokens Distribution App (faucet) on Bitcoin Cash" />
 	<meta property="og:image" content="https://microfi.eu/img/microfi_app.png" />
   <title>Microfi CashTokens Distribution App</title>
   <link rel="icon" type="image/png" sizes="42x42" href="./img/microfi_app.png" />
@@ -63,7 +63,10 @@
     <p>For more information, please visit <a href="https://darklabs.pages.dev">Dark Labs</a> CashTokens website.</p>
     <h3>Claim 1800 DARK<br>every 10 minutes</h3>
     <p>It`s free or almost free. You need Bitcoin Cash CashTokens aware address (bitcoincash:z...).</p>
-    <p>If there are no funds, send 1800 satoshi (0.000018 BCH) to:<br>bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc</p>
+    <p>If there are no funds, send 1800 satoshi (0.000018 BCH) to:<br>bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc">bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc</p>
+    <!-- <p>If there are no funds, send 1800 satoshi (0.000018 BCH) to:<br><span class ="faucetAddr" id="faucetAddr" value="bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc">bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc</span>
+      <button type="button" onclick="copyText()"><img class="icon" src="./img/copy.svg"></button>
+    </p> -->
     <p><img src="./img/qrcode1.png" alt="qr1" width="200"></p>
     <p>Do not send more than 1800 satoshi at a time.<br>This is used as blockchain transaction fee. No fee for tokens distributor.<br>
       Fill the simple captcha number and click/tap Claim button below.
@@ -77,14 +80,14 @@
       </label>
       <input type="text" name="userAddress" required="required" size="56" placeholder="bitcoincash:z..."><br>
       <label for="number" class="title">
-        <p>What is two plus eight?</p>
+        <p>What is three plus six?</p>
       </label>
       <input
         type="text"
         name="number" 
         required="required"
-        placeholder="2 + 8 = ?"
-        pattern="(10|ten)" 
+        placeholder="3 + 6 = ?"
+        pattern="(9|nine)" 
         oninvalid="this.setCustomValidity('Sorry, please enter the correct answer')"
         oninput="this.setCustomValidity('')"
       >
@@ -115,6 +118,9 @@
   </div>
   <br>
   <div>
+    <!-- <p>Consider donating a small amount of BCH to:<br><span class ="donateAddr" id="donateAddr" value="bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88">bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88</span>
+      <button type="button" onclick="copyText()"><img class="icon" src="./img/copy.svg"></button>
+    </p> -->
     <p>Consider donating a small amount of BCH to:<br>bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88</p>
     <p><img src="./img/qrcode2.png" alt="qr2" width="200"></p>
   </div>
@@ -127,5 +133,12 @@
   </footer>
   <br>
   <script src="./server.js" type="application/octet-stream"></script>
+  <!-- <script>
+    function copyText() {
+    let copyText = document.getElementById("faucetAddr");
+    //let copyText2 = document.getElementById("donateAddr");
+    copyText.select();
+  }
+  </script> -->
 </body>
 </html>
