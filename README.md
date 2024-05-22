@@ -32,7 +32,12 @@ You can host the app on e.g. https://cyclic.sh (1000 API requests/month, no slee
 Render tutorial:
 
 Create an account on Render.
-Create a new web service, connect Git repository, set Environment variables (copy/paste `Key` and `Value`  from .env, without " " and without PORT) and in settings use:
+Create a new web service, connect Git repository, set Environment variables:
+
+`WIF faucet wallet privatekey`
+`NODE_VERSION 20.12.2`  
+
+and in settings use:
 
 Build command `npm i`
 
