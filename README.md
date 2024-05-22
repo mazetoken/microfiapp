@@ -1,10 +1,10 @@
 # Microfi Free Flow CashTokens Distribution Application on Bitcoin Cash
 
-The app can distribute CashTokens (this is not a DEX or swap application). Claiming CashTokens can be free for users, but you will have to send CashTokens and Bitcoin Cash to the app wallet address (you pay blockchain transaction fee). Alternatively users can pay transactinion fee (about 2000 satoshi) if your app wallet address has 0 BCH.
+The app can distribute CashTokens (this is neither a smart contratc nor a DEX or swap application). Claiming CashTokens can be free for users, but token distributor will have to send CashTokens and Bitcoin Cash to the app wallet address (to pay blockchain transaction fee). Alternatively users can pay transactinion fee (1800 satoshi) if the app wallet address has 0 BCH.
 
 Try it:
 
-https://microfi.cyclic.cloud or alternatively https://microfi.onrender.com
+https://microfi.onrender.com
 
 If you have questions join https://t.me/mazetokens
 
