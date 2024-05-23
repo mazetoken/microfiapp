@@ -16,7 +16,7 @@ app.use(requestIp.mw());
 
 const apiLimiter = rateLimit({
     windowMs: 10 * 60 * 1000, // 10 minutes
-    max: 2,
+    max: 1,
     keyGenerator: function (req, res) {
         return req.clientIp
     },
@@ -46,7 +46,7 @@ app.post("/", apiLimiter, async function (req, res) {
     const wallet = await Wallet.fromWIF(wif);
     let userAddress = req.body.userAddress;
     let number = req.body.number; // captcha number
-    const tokenAmount = 3600; // amount of CashTokens to distribute (with decimal places)
+    const tokenAmount = 7200; // amount of CashTokens to distribute (with decimal places)
     const token = "b3dd6dee4e783acd755d216dd39e34faae748c43927dcb82152b6c2affd57bab"; // fungible tokenId (category)
     //let blacklistAddress = [ "bitcoincash:...", "bitcoincash:..." ];
     //for (let element of blacklistAddress) {
@@ -76,7 +76,7 @@ app.post("/", apiLimiter, async function (req, res) {
             }
         )]);
         res.render("index", {
-            content: "You got 3600 ZOMBIE CashTokens! You can claim again after 10 minutes",
+            content: "You got 7200 ZOMBIE CashTokens! You can claim again after 10 minutes",
             txIds: txId,
             error: null
         });
@@ -85,7 +85,7 @@ app.post("/", apiLimiter, async function (req, res) {
             res.render("index", {
                 content: null,
                 txIds: null,
-                error: "No luck. Someone was faster or there are not enough funds. Try again later."
+                error: "No luck. Try again later."
             });
         }
     };
