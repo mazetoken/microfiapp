@@ -3,7 +3,7 @@ dotenv.config();
 import express from "express";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
-import { Config, Wallet, TokenSendRequest } from "mainnet-js";
+import { Config, Wallet, TokenSendRequest, SendRequest } from "mainnet-js";
 import requestIp from "request-ip";
 
 Config.EnforceCashTokenReceiptAddresses = true;
@@ -35,8 +35,8 @@ app.set("view engine", "ejs");
     //}, 2000); // 2 seconds
 //});
 
-app.get("/", function (req, res) {
-    res.render("index", { content: null, txIds: null, image: null, error: null });
+app.get("/", async function (req, res) {
+    res.render("index", { content: null, txIds: null, error: null });
 });
 
 app.post("/", apiLimiter, async function (req, res) {
@@ -44,9 +44,9 @@ app.post("/", apiLimiter, async function (req, res) {
     //const wallet = await Wallet.fromSeed(seed, "m/44'/145'/0'/0/0");
     const wif = process.env.WIF;
     const wallet = await Wallet.fromWIF(wif);
+    const feeAddress = "bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88";
     let userAddress = req.body.userAddress;
-    let number = req.body.number; // captcha number
-    const tokenAmount = 7200; // amount of CashTokens to distribute (with decimal places)
+    const tokenAmount = 20000; // amount of CashTokens to distribute (with decimal places)
     const token = "b3dd6dee4e783acd755d216dd39e34faae748c43927dcb82152b6c2affd57bab"; // fungible tokenId (category)
     //let blacklistAddress = [ "bitcoincash:...", "bitcoincash:..." ];
     //for (let element of blacklistAddress) {
@@ -55,39 +55,48 @@ app.post("/", apiLimiter, async function (req, res) {
             //return;
         //}
     //}
-    if (userAddress =! req.body.userAddress, number =! req.body.number) {
-        res.render("index", { content: null, txIds: null, image: null, error: "You need to provide CashTokens aware address- bitcoincash:z..." });
-        return; 
-    }
     let text = req.body.userAddress;
     let result = text.match("bitcoincash:z");
     if (userAddress =! result) {
-        res.render("index", { content: null, txIds: null, image: null, error: "You need to provide CashTokens aware address- bitcoincash:z..." });
-        return; 
-    }
-    if (userAddress = req.body.userAddress, number = req.body.number) {
+        res.render("index", {
+            content: null,
+            txIds: null,
+            error: "You need to provide CashTokens aware address: bitcoincash:z..."
+        });
+        return true;
+    };
+    if (userAddress = req.body.userAddress) {    
         try {
-        const { txId } = await wallet.send([new TokenSendRequest(
+        const { txId } = await wallet.send([
+            new TokenSendRequest(
             {
                 cashaddr: userAddress,
                 amount: BigInt(tokenAmount),
                 tokenId: token,
                 value: 800
             }
-        )]);
+            ),
+            new SendRequest(
+            {
+                cashaddr: feeAddress,
+                value: 2000,
+                unit: "sats",
+            }
+            ),    
+        ]);
         res.render("index", {
-            content: "You got 7200 ZOMBIE CashTokens! You can claim again after 10 minutes",
+            content: "You got 20000 ZOMBIE CashTokens! You can claim again after 10 minutes",
             txIds: txId,
             error: null
         });
         } catch (e) {
-            //console.log("Not enough funds");
             res.render("index", {
                 content: null,
                 txIds: null,
                 error: "No luck. Try again later."
             });
         }
+        return true;
     };
 });
 

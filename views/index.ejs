@@ -1,148 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="description" content="Microfi CashTokens Distribution App (faucet) on Bitcoin Cash" />
-  <meta name="web" content="https://microfi.cyclic.cloud" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta property="og:title" content="Microfi CashTokens Distribution App" />
-	<meta property="og:description" content="Microfi CashTokens Distribution App (faucet) on Bitcoin Cash" />
-	<meta property="og:image" content="https://microfi.eu/img/microfi_app.png" />
-  <title>Microfi CashTokens Distribution App</title>
-  <link rel="icon" type="image/png" sizes="42x42" href="./img/microfi_app.png" />
-  <style>
-    body {
-      overflow-wrap: anywhere;
-      text-align: center;
-      max-width: 1000px;
-      margin: auto;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      background-color: black;
-      font-size: large;
-      color: #FFFFFF;
-    }
-    p {
-      font-size: medium;
-    }
-    a:link {
-      color: teal;
-      background-color: transparent;
-      text-decoration: none;
-    }
-    a:visited {
-      color: #0AC18E;
-      background-color: transparent;
-      text-decoration: none;
-    }
-    @media screen and (max-width: 500px) {
-      p img {
-		    max-width: 95%;
-	    }
-    }
-  </style>
+	<meta charset="UTF-8">
+	<meta name="description" content="Microfi CashTokens Distribution App (faucet) on Bitcoin Cash">
+	<meta name="web" content="https://microfi.onrender.com">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Microfi CashTokens Distribution App on Bitcoin Cash">
+	<meta property="og:description" content="Microfi CashTokens Distribution App (faucet) on Bitcoin Cash">
+	<meta property="og:image" content="">
+	<title>Microfi CashTokens Distribution App on Bitcoin Cash</title>
+	<link rel="icon" type="image/png" sizes="42x42" href="./img/microfi_app.png">
+	<style>
+		body {
+			overflow-wrap: anywhere;
+			max-width: 1000px;
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+			font-size: 20px;
+			text-align: center;
+			background-color: black;
+			color: whitesmoke;
+			margin: auto;
+		}
+
+		body p {
+			font-size: 16px;
+		}
+
+		a:link {
+			color: #0AC18E;
+			background-color: transparent;
+			text-decoration: underline;
+		}
+
+		a:visited {
+			color: #0AC18E;
+			background-color: transparent;
+			text-decoration: underline;
+		}
+
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			margin: 0;
+			padding: 0;
+		}
+
+		.card {
+			background-color: #212121;
+			color: whitesmoke;
+			margin: 10px;
+			border-radius: 10px;
+			overflow: hidden;
+			width: 800px;
+			height: auto;
+		}
+
+		.card img {
+			width: 200px;
+			height: 200px;
+			object-fit: cover;
+		}
+
+		.card p {
+			text-align: center;
+			font-size: 16px;
+			margin: 10px;
+		}
+
+		@media screen and (max-width: 600px) {
+			p img {
+				max-width: 95%;
+			}
+		}
+	</style>
 </head>
+
 <body>
-  <div>
-    <p><img src="./img/microfi_app_cover.png" alt="microfi" width="500"></p>
-    <p><img src="./img/bitcoin-cash-logo.png" alt="BCH" width="200"></p>
-    <p><i>Discover the power of <a href="https://cashtokens.org">CashTokens</a> with Microfi CashTokens Distribution App</i></p>
-  </div>
-  <br>
-  <hr>
-  <div>
-    <h3>Currently distributed token:</h3>
-    <h3>ZOMBIE CashTokens</h3>
-    <p>
-      Name: <b>ZOMBIE</b><br>
-      Symbol: <b>ZOMBIE</b><br>
-      Decimals: 0<br>
-      TokenId:<br><a href="https://explorer.salemkode.com/token/b3dd6dee4e783acd755d216dd39e34faae748c43927dcb82152b6c2affd57bab">b3dd6dee4e783acd755d216dd39e34faae748c43927dcb82152b6c2affd57bab</a>
-    </p>
-    <p><img src="./img/zombie_icon.png" width="200"></p>
-    <!-- <p>Copy Dark Labs Bitcoin Cash Metadata Registry <a href="https://darklabs.pages.dev/.well-known/bitcoin-cash-metadata-registry.json">BCMR url</a> and add it to the <a href="https://explorer.salemkode.com/registers">explorer</a> registers to see icons and tokens details.</p> -->
-    <p>For more information, please visit <a href="https://zombies.onuniverse.com">ZOMBIE</a> website.</p>
-    <h3>Claim 7200 ZOMBIE<br>every 10 minutes</h3>
-    <p>This is the first part of the ZOMBIE token distribution. Amount to be distributed: 3600000 ZOMBIE.</p>
-    <p>You need Bitcoin Cash CashTokens aware address (bitcoincash:z...) to receive ZOMBIE.</p>
-    <p>1. Send 1800 satoshi (0.000018 BCH) to:<br>bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc</p>
-    <!-- <p>If there are no funds, send 1800 satoshi (0.000018 BCH) to:<br><span class ="faucetAddr" id="faucetAddr" value="bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc">bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc</span>
-      <button type="button" onclick="copyText()"><img class="icon" src="./img/copy.svg"></button>
-    </p> -->
-    <p><img src="./img/qrcode1.png" alt="qr1" width="200"></p>
-    <p><i>This is not a smart contract. The app uses BCH`s 0-conf feature. Do not send more than 1800 satoshi at a time.<br>This is used as blockchain transaction fee. No fee for tokens distributor.</i><br><br>
-      2. Paste your wallet address, fill the simple captcha number and click/tap Claim button below.
-    </p>
-  </div>
-  <div>
-    <p>
-    <form class="input" action="/" method="post">
-      <label for="userAddress" class="title">
-        <p>Your Bitcoin Cash wallet address:</p>
-      </label>
-      <input type="text" name="userAddress" required="required" size="56" placeholder="bitcoincash:z..."><br>
-      <label for="number" class="title">
-        <p>What is four plus three?</p>
-      </label>
-      <input
-        type="text"
-        name="number" 
-        required="required"
-        placeholder="4 + 3 = ?"
-        pattern="(7|seven)" 
-        oninvalid="this.setCustomValidity('Sorry, please enter the correct answer')"
-        oninput="this.setCustomValidity('')"
-      >
-      <input name="decoy" style="display: none;" />
-      <br><br>
-      <input type="submit" value="Claim"><br>
-    </form>
-    </p>
-    <p><%= content %></p>
-    <p><a href="https://explorer.salemkode.com/tx/<%= txIds %>"><%= txIds %></a></p>
-    <p><%= error %></p>
-    <br>
-    <!-- <p><img src="./img/dark2.png" width="200"></p> -->
-  </div>
-  <br>
-  <hr>
-  <div>
-    <p>Previously distributed tokens:</p>
-    <p><a href="https://darklabs.pages.dev">DARK</a> CRC20 CashTokens <img src="./img/dark.png" width="46"><br>
-      April, 2024
-    </p>
-    <p><a href="https://darklabs.pages.dev">LOLLIPOP</a> CRC20 CashTokens <img src="./img/lollipop.png" width="46"><br>
-      February/March, 2024
-    </p>
-    <p><a href="https://darklabs.pages.dev">MESH</a> CRC20 CashTokens <img src="./img/mesh.png" width="46"><br>
-      September/October, 2023
-    </p>
-    <p><a href="https://microfi.eu/token">Microfi Free Flow</a> (XMI) CashTokens <img src="./img/microfi_icon.png" width="46"><br>
-      May/June, 2023
-    </p>
-  </div>
-  <br>
-  <div>
-    <!-- <p>Consider donating a small amount of BCH to:<br><span class ="donateAddr" id="donateAddr" value="bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88">bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88</span>
-      <button type="button" onclick="copyText()"><img class="icon" src="./img/copy.svg"></button>
-    </p> -->
-    <p>Consider donating a small amount of BCH to:<br>bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88</p>
-    <p><img src="./img/qrcode2.png" alt="qr2" width="200"></p>
-  </div>
-  <br>
-  <hr>
-  <footer>
-    <p>Credits:<br><a href="https://mainnet.cash">mainnet.cash</a></p>
-    <p><img src="./img/mtu.png" alt="MTU" width="36"> <a href="https://github.com/mazetoken/microfiapp/"><img src="./img/githubwhite.png" alt="Github" width="36"></a> <a href="https://microfi.eu"><img src= "./img/microfi_icon.png" alt="Microfi" width="36"> <a href="https://t.me/mazetokens"><img src="./img/telegram.png" alt="TelegramIcon" width="36"></a></p>
-    <p>Maze Tokens Underworld, 2020-2024</p>
-  </footer>
-  <br>
-  <script src="./server.js" type="application/octet-stream"></script>
-  <!-- <script>
-    function copyText() {
-    let copyText = document.getElementById("faucetAddr");
-    //let copyText2 = document.getElementById("donateAddr");
-    copyText.select();
-  }
-  </script> -->
+	<div>
+		<h2>Microfi<br>CashTokens Distribution Application</h2>
+		<p><img src="./img/bitcoin-cash-logo.png" alt="BCH" width="200"></p>
+		<p>Discover the power of <a href="https://cashtokens.org">CashTokens</a> with ZOMBIE <img src="./img/zombie_icon.png" alt="" width="64"></p>
+	</div>
+	<div class="container">
+		<div class="card">
+			<p></p>
+			<!-- <p><img src="./img/zombie_icon.png" alt="" width="360"></p> -->
+			<h3>Claim 20000 ZOMBIE CashTokens<br>every 10 minutes</h3>
+			<p>Total amount to be distributed: 5000000 ZOMBIE</p>
+			<br>
+			<p>1. Send 4000 satoshi (0.00004 BCH) to:<br>bitcoincash:qz2ajh3pcp06rqrjgw5df0a02yrg2jypeywg34pafc</p>
+			<p><img src="./img/qrcode1.png" alt="qr1" width="200"></p>
+			<p><i>The app uses BCH`s 0-conf feature. Do not send more than 4000 satoshi at a time.<br>You need to wait at least 10 minutes to send satoshis and claim again.</i></p>
+			<br>
+			<p>2. Your Bitcoin Cash wallet address (cashtokens aware):</p>
+			<p>
+			<form class="input" action="/" method="post">
+				<!-- <label for="userAddress" class="title">
+					<p>Your Bitcoin Cash wallet address (cashtokens aware):</p>
+				</label> -->
+				<p><input type="text" name="userAddress" required="required" size="50" placeholder="bitcoincash:z..."></p>
+				<!-- <br>
+				<p>3. Use Claim button below and wait a few seconds.<br>Good luck.</p> -->
+				<p><input type="submit" value="Claim ZOMBIE"></p>
+			</form>
+			</p>
+			<p><%= content %></p>
+			<p><a href="https://explorer.bitcoinunlimited.info/tx/<%= txIds %>"><%= txIds %></a></p>
+			<p><%= error %></p>
+			<br>
+      		<!-- <p>Token info:</p>
+			<p>
+				Name: <b>ZOMBIE</b><br>
+				Symbol: <b>ZOMBIE</b><br>
+				Decimals: 0<br>
+				TokenId:<br><a href="https://explorer.salemkode.com/token/b3dd6dee4e783acd755d216dd39e34faae748c43927dcb82152b6c2affd57bab">b3dd6dee4e783acd755d216dd39e34faae748c43927dcb82152b6c2affd57bab</a>
+			</p> -->
+      		<br>
+		</div>
+	</div>
+	<br>
+	<div>
+		<p>Token info:</p>
+		<p>
+			Name: <b>ZOMBIE</b><br>
+			Symbol: <b>ZOMBIE</b><br>
+			Decimals: 0<br>
+			TokenId:<br><a href="https://explorer.salemkode.com/token/b3dd6dee4e783acd755d216dd39e34faae748c43927dcb82152b6c2affd57bab">b3dd6dee4e783acd755d216dd39e34faae748c43927dcb82152b6c2affd57bab</a>
+		</p>
+		<br>
+		<p>ZOMBIEs have been seen on<br><a href="https://tapswap.cash/trade/b3dd6dee4e783acd755d216dd39e34faae748c43927dcb82152b6c2affd57bab">TapSwap CashTokens Marketplace</a> and <a href="https://app.cauldron.quest">Cauldron DEX</a></p>
+	</div>
+	<!-- <br>
+	<div>
+		<p>Donations to zombie food:<br>bitcoincash:qr8j9fzlmsdfy52n37pg2frqaddsjs99qyat9nwf88</p>
+		<p><img src="./img/qrcode2.png" alt="qr2" width="200"></p>
+	</div> -->
+	<br><br>
+	<footer>
+		<p><a href="https://github.com/mazetoken/microfiapp/"><img src="./img/githubwhite.png" alt="Github" width="36"></a> <a href="https://t.me/mazetokens"><img src="./img/telegram.png" alt="TelegramIcon" width="36"></a> <a href="https:zombies.onuniverse.com"><img src="./img/zombie_icon.png" alt="ZombieIcon" width="36"></a></p>
+		<p>Microfi Free Flow & Maze Tokens Underworld, 2020-2024</p>
+	</footer>
+	<br>
+	<script src="./server.js" type="application/octet-stream"></script>
 </body>
+
 </html>
